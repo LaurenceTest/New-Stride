@@ -9,8 +9,6 @@ html, body {
 body {
     font-family: Arial, sans-serif;
     color: #fff;
-    display: flex;
-    flex-direction: column;
 }
 .container{
     width: 100%;
@@ -67,6 +65,7 @@ body {
 
 div {
     /* border: red 2px dashed; */
+    
 }
 
 nav {

@@ -14,16 +14,12 @@ function LogIn() {
         <title>NewStride</title>
         <link rel="stylesheet" href="styles.css"></link>
       </head>
-      <body>
-        <div className="login-bg">
-          <p>test</p>
-          <div className="login-form">
-          <div className="form-floating">
-            <input type="email" className="form-control fs-15px" id="floatingInput" />
-            <label for="floatingInput" class="d-flex align-items-center fs-13px">
-              Email address
-            </label>
-          </div>
+      <body className="login-bg">
+        <div></div>
+        <div className="login-form">
+          <h1>NewStride</h1>
+          <div>
+            <h3>Membership Login</h3>
           </div>
         </div>
       </body>

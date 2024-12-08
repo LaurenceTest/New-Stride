@@ -1,10 +1,12 @@
 .navbar {
     background-color: #5E1296;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     box-shadow: 1px 2px rgba(0, 0, 0, 0.185);
+    position: sticky;
 }
 
 .navbar .logo {
