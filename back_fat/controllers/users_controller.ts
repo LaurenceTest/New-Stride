@@ -1,62 +1,73 @@
-// @deno-types="npm:@types/express"
+// @ts-types="npm:@types/express"
 import {Request, Response} from "npm:express";
-// @deno-types="npm:@types/sequelize"
-import { Model } from "npm:sequelize"
+// @ts-types="npm:@types/bcrypt"
+import bcrypt from "npm:bcrypt"
 import User from "../models/users_model.ts"
 import Goal from "../models/goals_model.ts";
 import Plan from "../models/plans_model.ts";
-import modelAI from "../ai_setup.ts";
+import { promptPlan } from "../utils/ai_helper.ts";
 import sequelize from "../db_setup.ts";
+import { ResponseHelper, updateMessage } from "../utils/response.ts";
+import { createToken,MAX_AGE } from "../utils/jwt.ts";
+import { isMale } from "../utils/utils.ts";
 
 export const getUser = async (req:Request,res:Response)=>{
-    if(req.params.id){
-        const all = await User.findByPk(req.params.id)
-        res.send(all)
-    }
-}
-
-const promptPlan = async (data)=>{
-    const prompt = `Create a list of exercises for a ${data.gender} with a height of ${data.height}centimeters and weight of ${data.weight}kilograms. `+
-    `This person is ${data.baseline_activity} when it comes to their daily life. `+
-    `The goal of working out is to ${data.main_goal} and have a weight goal of ${data.weight_goal}kilograms`
-    console.log(prompt)
-    return modelAI.generateContent(prompt)
+    const user = await User.findOne({
+        attributes:{
+            exclude: ['id','password','createdAt','updatedAt']
+        },
+        where:{id:req.body.id}
+    })
+    res.status(200).send(user)
 }
 
 export const createUser = async (req:Request,res:Response)=>{
     const data = req.body
     const transaction = await sequelize.transaction()
+    const hashedPassword = await bcrypt.hash(data.password,10)
     try {
-        const plan = promptPlan(data)
-        const user = await User.create({
+        const user = (await User.create({
             username: data.username,
             email: data.email,
-            password: data.password,
+            password: hashedPassword,
             birth_date: data.birth_date,
-            gender: data.gender === "male",
+            is_male: isMale(data.gender),
             height: data.height,
             weight: data.weight
         },{
-            transaction: transaction
-        })
+            transaction
+        })).dataValues
+
+        data.user_id = user.id
+
         await Goal.create({
             user_id: user.id,
             main_goal: data.main_goal,
             baseline_activity: data.baseline_activity,
             weight_goal: data.weight_goal
         },{
-            transaction: transaction
+            transaction
         })
-        // await transaction.commit()
-        await transaction.rollback()
-        res.send((await plan).response.text())
+
+        const generatedPlans = await promptPlan(data)
+        await Plan.bulkCreate(generatedPlans,{validate:true,transaction})
+        
+        res.cookie('jwt',createToken(user.id),{httpOnly:true,maxAge:MAX_AGE * 1000})
+        await transaction.commit()
+
+        res.status(201).send(new ResponseHelper(`Sucessfully created user ${data.username}`))
     } catch (error) {
         console.error(error)
         await transaction.rollback()
-        res.send("Failed to create user")
+        res.status(500).send(new ResponseHelper("Failed to create user"))
     }
 }
 
-export const updateUser = (req:Request,res:Response)=>{
-    res.send("Not yet implemented")
+export const updateUser = async (req:Request,res:Response)=>{
+    const {id,...contents} = req.body
+    contents.gender = contents.gender === "male"
+    const [rows] = await User.update(contents,{where: {id: id}})
+    const {status,message} = updateMessage("User",rows)
+    res.status(status).send(new ResponseHelper(message,{rowsUpdated: rows}))
+    res.sendStatus(200)
 }

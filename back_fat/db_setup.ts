@@ -1,7 +1,6 @@
-// @deno-types="npm:@types/sequelize"
 import { Sequelize } from "npm:sequelize"
 
-const sequelize = await new Sequelize({
+const sequelize = new Sequelize({
   dialect: 'mysql',
   database: Deno.env.get("DB_NAME"),
   username: Deno.env.get("DB_USERNAME"),

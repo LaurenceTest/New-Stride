@@ -1,50 +1,43 @@
-// @deno-types="npm:@types/express"
+// @ts-types="npm:@types/express"
 import {Request, Response} from "npm:express";
 import Workout from "../models/workouts_model.ts"
+import { ResponseHelper, updateMessage } from "../utils/response.ts";
+import { floorLimit } from "../utils/utils.ts";
 
-const floorLimit = (limit:number)=>{
-    if(limit >= 50) return 50
-    if(limit >= 30) return 30
-    return 10
-}
-
-export const getWorkouts = (req:Request,res:Response)=>{
-    const limit = floorLimit(Number(req.params.number))
-    Workout.findAll({
+export const getWorkouts = async (req:Request,res:Response)=>{
+    const limit = floorLimit(Number(req.params.number ?? 10))
+    const workouts = await Workout.findAll({
         where:{
-            user_id: req.params.id
+            user_id: req.body.id
         },
         order:[['createdAt','DESC']],
         limit: limit
     })
-    res.send("secret")
+    res.status(200).send(workouts)
 }
 
-export const createWorkout = (req:Request,res:Response)=>{
-    const {name,user_id,type,duration,repetition,weight,intensity} = req.body
-    Workout.create({
-        user_id: user_id,
-        name: name,
-        type: type,
-        duration: duration,
-        repetition: repetition,
-        weight: weight,
-        intensity:intensity
-    })
-    res.send("Success")
+export const createWorkout = async (req:Request,res:Response)=>{
+    const {name,id,type,duration,repetition,weight,intensity} = req.body
+    try {
+        const workout = await Workout.create({
+            user_id: id,
+            name: name,
+            type: type,
+            duration: duration,
+            repetition: repetition,
+            weight: weight,
+            intensity:intensity
+        })
+        res.status(201).send(new ResponseHelper(`Succesfully created workout`,{id:workout.id}))
+    } catch (error) {
+        console.error(error)
+        res.sendStatus(400)
+    }
 }
 
-export const updateWorkout = (req:Request,res:Response)=>{
-    const {id,name,type,duration,repetition,weight,intensity} = req.body
-    Workout.update({
-        name: name,
-        type: type,
-        duration: duration,
-        repetition: repetition,
-        weight: weight,
-        intensity:intensity
-    },{
-        where:id
-    })
-    res.send("Success")
+export const updateWorkout = async (req:Request,res:Response)=>{
+    const {id,workout_id,...contents} = req.body
+    const [rows] = await Workout.update(contents,{where:{user_id:id,id:workout_id}})
+    const {status,message} = updateMessage("Workouts",rows)
+    res.status(status).send(new ResponseHelper(message,{rowsUpdated: rows}))
 }

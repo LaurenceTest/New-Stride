@@ -1,12 +1,13 @@
-// @deno-types="npm:@types/express"
+// @ts-types="npm:@types/express"
 import {Request, Response} from "npm:express";
 import Plan from "../models/plans_model.ts"
+import { Model } from "npm:sequelize";
 
-export const getPlans = (req:Request,res:Response)=>{
-    const plans = Plan.findAll({
+export const getPlans = async (req:Request,res:Response)=>{
+    const plans:Model[] = await Plan.findAll({
         where: {
-            id: req.params.id
+            user_id: req.body.id
         }
     })
-    res.send(plans)
+    res.status(200).send(plans)
 }
