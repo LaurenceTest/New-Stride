@@ -6,6 +6,6 @@ import "../CSS/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <LogIn />
+    <App />
   </StrictMode>,
 );
