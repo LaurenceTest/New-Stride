@@ -1,9 +1,8 @@
 import "../CSS/mainPage.css";
-import { Next } from "../components/Next"
 import HeaderNon from "../Components/header_notuser";
 import womanRunningImage from "../assets/bgs/woman-running-fitness.png"; 
-import ImageComponent from "../components/Image_component";
-function Home(){
+
+function SignIn(){
     return (
         <>
             <HeaderNon></HeaderNon>
@@ -14,15 +13,13 @@ function Home(){
                 <p className="description">
                     Build healthy habits with the exercise and calorie tracker
                 </p>
-                
-                <Next className="continue-button" to="/welcome" label="START TODAY"/>
-                
+                <div className="cta-button">
+                    <button>START TODAY</button>
+                </div>
             </div>
-            <ImageComponent
-            src={womanRunningImage}
-                alt="Fitness woman running"
-                className="featured-image" 
-      />
+            <div className= "image-content">
+                <img src={womanRunningImage} alt="Fitness woman"></img>
+            </div>
             </main>
         </>    
     );
@@ -30,4 +27,4 @@ function Home(){
 
 
 
-export default Home;
+export default SignIn;
