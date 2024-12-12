@@ -37,3 +37,24 @@
     transition: 410ms;
     opacity: 50%;
 }
+
+.header-btn {
+    font-weight: bolder;
+    border-radius: 100px;
+    padding: 5px 20px;
+
+    background: white;
+    color: #9F35EC;
+    border: #9F35EC 1px solid;
+}
+
+.header-btn:hover {
+    transition-duration: 500ms;
+    background: #9F35EC;
+    color: white;
+}
+
+.logout-btn{
+    font-weight: bolder;
+    background: none;
+}

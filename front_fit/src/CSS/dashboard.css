@@ -1,0 +1,44 @@
+.agenda-card-btn{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 3em;
+}
+
+.agenda-card-design{
+    grid-row-start: 2;
+    grid-row-end: 4;
+    height: 13em;
+}
+
+.agenda-card-list{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    width: 50em;
+    height: 100%;
+}
+
+.exercise-col-1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.exercise-col-2{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.exercise-col-3{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.exercise-col-4{
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.agenda-card{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}

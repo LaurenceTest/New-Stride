@@ -5,6 +5,7 @@ import SignUp from "./SignUp";
 import Home from "./Home";
 import CreateUser from "./CreateUsername";
 import Welcome from "./Welcome";
+import Dashboard from "./Dashboard";
 function App() {
 
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/createuser" element={<CreateUser/>}/>
           <Route path="/welcome" element={<Welcome/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
         
     </Router>
