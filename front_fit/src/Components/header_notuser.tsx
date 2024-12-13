@@ -10,8 +10,8 @@ function HeaderNon() {
           <p>NewStride</p>
         </div>
         <nav className="nav-links">
-          <a href="#" className="btn header-btn btn-primary"> How it works</a>
-          <a href="#" className="btn header-btn btn-primary">Our Philosphy</a>
+          <a href="#" className="btn white-btn btn-primary"> How it works</a>
+          <a href="#" className="btn white-btn btn-primary">Our Philosphy</a>
         </nav>
         </div>
       <div className="sign-in">

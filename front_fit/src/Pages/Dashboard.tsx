@@ -11,6 +11,7 @@ const Dashboard = ()=>{
         <div>
             <Header username="User"/>
             <div className="text-content">
+                <div className="tc-text"></div>
                 <img src={runningWoman} alt="Running woman" className="featured-image"/>
             </div>
             {/* <BackgroundView/> */}
