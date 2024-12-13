@@ -6,7 +6,7 @@ import "../CSS/SignIn.css";
 
 const Welcome = (): JSX.Element => {
   return (
-    <div className="sign-up" component="section">
+    <div className="sign-up">
       <div className="content">
         <h1 className="title">
           NewStride
@@ -16,44 +16,25 @@ const Welcome = (): JSX.Element => {
         </h2>
 
         <div className="displayWelcome">
-          <ImgPreview src="maskGroup2"
-        </div>
-        {/* <div className="images">
-          <img className="image" alt="Fitness" src={maskGroup2} />
-          <img className="image" alt="Healthy Food" src={image} />
-          <img className="image" alt="Mindful Eating" src={maskGroup} />
+          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
+          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
+          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
         </div>
 
-        <div className="text-section">
-          <p className="text" component="p">
-            Ready for some wins?
-            <br />
-            Start tracking, it’s easy!
-          </p>
-          <p className="text" component="p">
-            Discover the impact of
-            <br />
-            your food and fitness
-          </p>
-          <p className="text" component="p">
-            And make mindful eating
-            <br />a habit for life
-          </p>
-        </div> */}
-
-        <Next className="continue-button" to="/createuser" />
+        <Next className="btn-purple" to="/createuser" />
 
       </div>
     </div>
   );
 };
 
-const ImgPreview: React.FC<{ src: string; text: string; alt: string }> = (props) => {
-  const { src, text, alt } = props; // Destructure the props object
+const ImgPreview: React.FC<{ src: string; t1: string; t2:string; alt: string }> = (props) => {
+  const { src, t1, t2, alt } = props; // Destructure the props object
   return (
-      <div>
+      <div className="ImgDiv">
           <img src={src} alt={alt} className="image" />
-          <p>{text}</p>
+          <p className="text">{t1}</p>
+          <p className="text">{t2}</p>
       </div>
   );
 };

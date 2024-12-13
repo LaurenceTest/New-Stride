@@ -35,22 +35,25 @@
     justify-content: space-between;
     margin: 32px 0;
   }
+
+  .ImgDiv {
+    width: 30%;
+    align-items: center;
+  }
   
   .image {
-    width: 30%;
     border-radius: 8px;
   }
   
   .text {
     color: #505050;
     font-family: "Inter-Medium", Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 1.5;
-    width: 30%;
   }
   
-  .continue-button {
+  .btn-purple {
     background-color: #9e35eb;
     color: #ffffff;
     font-family: "Inter-SemiBold", Helvetica, sans-serif;

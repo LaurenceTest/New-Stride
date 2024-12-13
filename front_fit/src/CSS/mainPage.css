@@ -91,3 +91,27 @@ body {
 .featured-image {
     width: inherit;
 }
+
+.next {
+    display: inline-block;
+    text-decoration: none; 
+  }
+  
+.btn-purple {
+  background-color: #9e35eb;
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-transform: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-purple:hover {
+    transition: 600ms;
+    color: white;
+    opacity: 50%;
+  }
