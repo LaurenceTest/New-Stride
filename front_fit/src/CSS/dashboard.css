@@ -22,11 +22,13 @@
     grid-row-start: 2;
     grid-row-end: 4;
     height: 13em;
+
+    border: #bc61ff 1px solid;
 }
 
 .agenda-card-list{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -35,21 +37,32 @@
     height: 100%;
 }
 
-.exercise-col-1{
+.exercise-col1{
     grid-column-start: 1;
     grid-column-end: 2;
+    
+    text-align: left;
+    white-space: nowrap;         /* Prevent text from wrapping to a new line */
+    overflow: hidden;           /* Hide the overflowed text */
+    text-overflow: ellipsis; 
+    max-width: 100%;
 }
-.exercise-col-2{
+.exercise-col2{
     grid-column-start: 2;
     grid-column-end: 3;
 }
-.exercise-col-3{
+.exercise-col3{
     grid-column-start: 3;
     grid-column-end: 4;
 }
-.exercise-col-4{
+.exercise-col4{
     grid-column-start: 4;
     grid-column-end: 5;
+
+}
+
+.week-s-agenda {
+    width: 15rem;
 }
 
 .total-card{

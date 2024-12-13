@@ -13,19 +13,10 @@ const Dashboard = ()=>{
                 <div className="tc-text"></div>
                 <img src={runningWoman} alt="Running woman" className="featured-image"/>
             </div>
-            {/* <BackgroundView/> */}
             <div className="card-flex">
                 <AgendaCard/>
                 <TotalCard/>
             </div>
-        </div>
-    )
-}
-
-const BackgroundView = ()=>{
-    return(
-        <div className="background-wrap">
-            <img className="image-front" src={runningWoman}/>
         </div>
     )
 }
@@ -38,17 +29,22 @@ interface Exercise{
 }
 
 const AgendaCard = ()=>{
-    const [exercises] = useState([{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}])
+    const [exercises] = useState([{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}])
     return(
         <div className="card agenda-card">
-            <button className="agenda-card-btn">Done any?</button>
-            <section className="agenda-card-design">Week Agenda</section>
+            <button className="agenda-card-btn btn-purple">Done any?</button>
+            <div className="week-s-agenda">
+                <section className="agenda-card-design">
+                    <h3>Week's Agenda</h3>
+                    <section className="card"></section>
+                </section>
+            </div>
             <div className="card agenda-card-list">
                 {/* FIXME: CSS add */}
                 <div className="exercise-col1"></div>
                 <div className="exercise-col2">Sets</div>
                 <div className="exercise-col3">Reps</div>
-                <div className="exercise-col3">Duration</div>
+                <div className="exercise-col4">Duration</div>
                 {
                     exercises.map((exercise:Exercise)=>{
                         return(
