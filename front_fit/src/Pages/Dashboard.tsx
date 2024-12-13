@@ -2,13 +2,17 @@ import "../CSS/card.css"
 import Header from "../Components/header_user"
 import runningWoman from "../assets/bgs/woman-running.png"
 import "../CSS/dashboard.css"
+import "../CSS/mainPage.css"
 import { useState } from "react"
 
 const Dashboard = ()=>{
     return(
         <div>
             <Header username="User"/>
-            <BackgroundView/>
+            <div className="text-content">
+                <img src={runningWoman} alt="Running woman" className="featured-image"/>
+            </div>
+            {/* <BackgroundView/> */}
             <div className="card-flex">
                 <AgendaCard/>
             </div>

@@ -7,7 +7,7 @@ function SignIn(){
         <>
             <HeaderNon></HeaderNon>
             <main className="main-section">
-            <div className="text-content">
+            {/* <div className="text-content">
                 <p className="tagline">#1 Nutrition Tracking Web App</p>
                 <h1>Reach your goals with NewStride</h1>
                 <p className="description">
@@ -19,7 +19,7 @@ function SignIn(){
             </div>
             <div className= "image-content">
                 <img src={womanRunningImage} alt="Fitness woman"></img>
-            </div>
+            </div> */}
             </main>
         </>    
     );
