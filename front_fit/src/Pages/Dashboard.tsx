@@ -35,7 +35,7 @@ const AgendaCard = ()=>{
             <button className="agenda-card-btn btn-purple">Done any?</button>
             <div className="week-s-agenda">
                 <section className="agenda-card-design">
-                    <h3>Week's Agenda</h3>
+                    <h3>Weight</h3>
                     <section className="card"></section>
                 </section>
             </div>
@@ -64,6 +64,16 @@ const ExerciseItem:React.FC<Exercise> = ({name,sets,reps,dur})=>{
             <div className="exercise-col2">{sets}</div>
             <div className="exercise-col3">{reps}</div>
             <div className="exercise-col4">{dur}</div>
+        </>
+    )
+}
+
+const placeholdler:React.FC<Exercise> = ({name,sets,reps,dur})=>{
+    return(
+        <>
+        <div>
+            
+        </div>
         </>
     )
 }
