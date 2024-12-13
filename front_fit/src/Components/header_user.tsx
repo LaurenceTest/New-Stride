@@ -1,3 +1,5 @@
+import "../CSS/mainPage.css"
+
 const Header:React.FC<{username:string}> = ({username})=>{
     return (
         <><header className="navbar">
@@ -22,7 +24,7 @@ const Header:React.FC<{username:string}> = ({username})=>{
 
 const HeaderButton:React.FC<{text:string}> = ({text})=>{
     return(
-        <button className="header-btn">{text}</button>
+        <button className="white-btn">{text}</button>
     )
 }
 

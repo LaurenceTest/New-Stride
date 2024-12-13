@@ -1,3 +1,9 @@
+/* 
+
+This is for home page
+
+*/
+
 *{
     margin: 0;
     padding: 0;
@@ -35,7 +41,7 @@ body {
 
 .text-content > div {
     width: 80%;
-    color: #fff;
+    /* border: red 1px solid; */
 }
 
 .tc-text {
@@ -72,7 +78,23 @@ body {
     flex-shrink: 0;
 }
 
-.header-btn {
+.featured-image {
+    width: inherit;
+    height: initial;
+}
+
+.next {
+    display: inline-block;
+    text-decoration: none; 
+  }
+
+/* 
+
+Buttons
+
+*/
+
+  .white-btn {
     font-weight: bolder;
     border-radius: 100px;
     padding: 5px 20px;
@@ -82,20 +104,12 @@ body {
     border: #9F35EC 1px solid;
 }
 
-.header-btn:hover {
-    transition-duration: 500ms;
+.white-btn:hover {
+    transition: 500ms;
     background: #9F35EC;
+    border-color: #9F35EC;
     color: white;
 }
-
-.featured-image {
-    width: inherit;
-}
-
-.next {
-    display: inline-block;
-    text-decoration: none; 
-  }
   
 .btn-purple {
   background-color: #9e35eb;
@@ -115,3 +129,14 @@ body {
     color: white;
     opacity: 50%;
   }
+
+  /* 
+
+This is for LOGIN
+
+*/
+
+.login-form {
+    border: pink 3px solid;
+    
+}

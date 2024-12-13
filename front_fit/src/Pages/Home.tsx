@@ -16,7 +16,7 @@ function Home(){
                         Build healthy habits with the exercise and calorie tracker
                     </p>
                     
-                    <Next className="header-btn" to="/welcome" label="START TODAY &nbsp;&nbsp;&nbsp;>"/>
+                    <Next className="white-btn" to="/welcome" label="START TODAY"/>
                 </div>
 
                 <div className="tc-image">
