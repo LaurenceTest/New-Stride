@@ -7,7 +7,7 @@ import { useState } from "react"
 
 const Dashboard = ()=>{
     return(
-        <div>
+        <div className="dashboard-page">
             <Header username="User"/>
             <div className="text-content">
                 <div className="tc-text"></div>
@@ -16,6 +16,7 @@ const Dashboard = ()=>{
             {/* <BackgroundView/> */}
             <div className="card-flex">
                 <AgendaCard/>
+                <TotalCard/>
             </div>
         </div>
     )
@@ -68,6 +69,23 @@ const ExerciseItem:React.FC<Exercise> = ({name,sets,reps,dur})=>{
             <div className="exercise-col3">{reps}</div>
             <div className="exercise-col4">{dur}</div>
         </>
+    )
+}
+
+const TotalCard = ()=>{
+    return(
+        <div className="card total-card">
+            <header className="total-card-title">Total</header>
+            <TotalCardItem>Sets</TotalCardItem>
+            <TotalCardItem>Reps</TotalCardItem>
+            <TotalCardItem>Time</TotalCardItem>
+        </div>
+    )
+}
+
+const TotalCardItem:React.FC<{children:string}> = ({children})=>{
+    return(
+        <div className="card total-card-item">{children}</div>
     )
 }
 
