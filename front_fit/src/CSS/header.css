@@ -33,12 +33,16 @@
     display: flex;
 }
 
-.login-btn:hover {
-    transition: 410ms;
-    opacity: 50%;
-}
-
 .logout-btn{
     font-weight: bolder;
     background: none;
+    color: #fff;
+    border: #fff solid 2px;
+    margin-left: 2rem;
+}
+
+.login-btn:hover, .logout-btn:hover {
+    transition: 410ms;
+    opacity: 50%;
+    border-color: #fff;
 }

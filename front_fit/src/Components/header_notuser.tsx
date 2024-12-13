@@ -1,7 +1,6 @@
 import "../CSS/header.css";
 import "../CSS/App.css"
 
-
 function HeaderNon() {
   return (
     <><header className="navbar">

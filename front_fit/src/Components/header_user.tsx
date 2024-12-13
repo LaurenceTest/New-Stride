@@ -1,3 +1,5 @@
+import "../CSS/mainPage.css"
+
 const Header:React.FC<{username:string}> = ({username})=>{
     return (
         <><header className="navbar">

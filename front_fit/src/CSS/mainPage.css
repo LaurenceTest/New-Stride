@@ -105,8 +105,9 @@ Buttons
 }
 
 .white-btn:hover {
-    transition-duration: 500ms;
+    transition: 500ms;
     background: #9F35EC;
+    border-color: #9F35EC;
     color: white;
 }
   
