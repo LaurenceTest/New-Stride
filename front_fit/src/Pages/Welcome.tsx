@@ -20,7 +20,7 @@ const Welcome = (): JSX.Element => {
           <ImgPreview src={maskGroup} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
         </div>
 
-        <Next className="btn-purple" to="/createuser" />
+        <Next className="btn-purple" to="/question1" />
 
       </div>
     </div>

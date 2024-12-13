@@ -6,6 +6,11 @@ import Home from "./Home";
 import CreateUser from "./CreateUsername";
 import Welcome from "./Welcome";
 import Dashboard from "./Dashboard";
+import Demographic from "./Demographic1";
+import Demographic2 from "./Demographic2";
+import CreateGoal from "./CreateGoal";
+import CreateBaselineActivity from "./CreateBaselineAct";
+import InputName from "./CreateName";
 function App() {
 
 
@@ -17,6 +22,11 @@ function App() {
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/createuser" element={<CreateUser/>}/>
           <Route path="/welcome" element={<Welcome/>}/>
+          <Route path="/question1" element={<InputName/>}/>
+          <Route path="/question2" element={<Demographic/>}/>
+          <Route path="/question3" element={<Demographic2/>}/>
+          <Route path="/question4" element={<CreateGoal/>}/>
+          <Route path="/question5" element={<CreateBaselineActivity/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
         
