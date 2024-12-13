@@ -6,7 +6,6 @@ import "../CSS/mainPage.css"
 import { useState } from "react"
 
 const Dashboard = ()=>{
-    //This is dumb but I can't think of any other way
     return(
         <div>
             <Header username="User"/>
