@@ -1,4 +1,4 @@
-import { Next } from "../components/Next"
+import { Next } from "../Components/Next"
 import image from "../assets/training_weights_girl.png";
 import maskGroup2 from "../assets/training_weights_girl.png";
 import maskGroup from "../assets/training_weights_girl.png";
@@ -6,16 +6,19 @@ import "../CSS/SignIn.css";
 
 const Welcome = (): JSX.Element => {
   return (
-    <section className="sign-up" component="section">
+    <div className="sign-up" component="section">
       <div className="content">
         <h1 className="title">
           NewStride
         </h1>
         <h2 className="subtitle">
-          Welcome to
+          Welcomes you
         </h2>
 
-        <div className="images">
+        <div className="displayWelcome">
+          <ImgPreview src="maskGroup2"
+        </div>
+        {/* <div className="images">
           <img className="image" alt="Fitness" src={maskGroup2} />
           <img className="image" alt="Healthy Food" src={image} />
           <img className="image" alt="Mindful Eating" src={maskGroup} />
@@ -36,12 +39,22 @@ const Welcome = (): JSX.Element => {
             And make mindful eating
             <br />a habit for life
           </p>
-        </div>
+        </div> */}
 
         <Next className="continue-button" to="/createuser" />
 
       </div>
-    </section>
+    </div>
+  );
+};
+
+const ImgPreview: React.FC<{ src: string; text: string; alt: string }> = (props) => {
+  const { src, text, alt } = props; // Destructure the props object
+  return (
+      <div>
+          <img src={src} alt={alt} className="image" />
+          <p>{text}</p>
+      </div>
   );
 };
 
