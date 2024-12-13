@@ -67,4 +67,13 @@
     grid-row-start: 2;
     grid-column: span 1;
     justify-self: center;
+    width: 100%;
+}
+
+.total-card-circle{
+    border: solid 1em;
+    border-radius: 50%;
+    border-color: #bc61ff;
+    aspect-ratio: 1 / 1;
+    place-content: center;
 }

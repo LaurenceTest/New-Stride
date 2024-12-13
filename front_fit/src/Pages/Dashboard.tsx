@@ -76,16 +76,21 @@ const TotalCard = ()=>{
     return(
         <div className="card total-card">
             <header className="total-card-title">Total</header>
-            <TotalCardItem>Sets</TotalCardItem>
-            <TotalCardItem>Reps</TotalCardItem>
-            <TotalCardItem>Time</TotalCardItem>
+            <TotalCardItem value={10}>Sets</TotalCardItem>
+            <TotalCardItem value={10}>Reps</TotalCardItem>
+            <TotalCardItem value={10}>Time</TotalCardItem>
         </div>
     )
 }
 
-const TotalCardItem:React.FC<{children:string}> = ({children})=>{
+const TotalCardItem:React.FC<{children:string,value:number}> = ({children,value})=>{
     return(
-        <div className="card total-card-item">{children}</div>
+        <>
+            <div className="card total-card-item">
+                {children}
+                <div className="total-card-circle">{value}</div>
+            </div>
+        </>
     )
 }
 
