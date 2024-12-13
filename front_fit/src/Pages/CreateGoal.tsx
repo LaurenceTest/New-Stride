@@ -29,8 +29,8 @@ const CreateGoal = (): JSX.Element => {
             onChange={handleGoalChange}
           />
           <div className="button-group">
-            <Next label="Back" to="/question2" className="btn-purple" />
-            <Next label="Next" to="/question4" className="btn-purple" />
+            <Next label="Back" to="/question3" className="btn-purple" />
+            <Next label="Next" to="/question5" className="btn-purple" />
           </div>
         </FormContent>
       </main></div>

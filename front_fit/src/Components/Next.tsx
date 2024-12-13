@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "../CSS/mainPage.css";
 import "../CSS/header.css";
-type RoutePath = "/" | "/login" | "/signup" | "/welcome" | "/createuser";
+type RoutePath = "/" | "/login" | "/signup" | "/welcome" | "/dashboard"
+| "/question1" | "/question2" | "/question3" | "/question4" | "/question5"
+| "/createuser";
 
 interface Props {
   className?: string;

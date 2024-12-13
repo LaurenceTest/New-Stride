@@ -30,7 +30,7 @@ const CreateBaselineActivity = (): JSX.Element => {
             onChange={handleBaselineAct}
           />
           <div className="button-group">
-            <Next label="Back" to="/question3" className="btn-purple" />
+            <Next label="Back" to="/question4" className="btn-purple" />
             <Next label="Next" to="/createuser" className="btn-purple" />
           </div>
         </FormContent>

@@ -42,8 +42,8 @@ const Demographic2 = (): JSX.Element => {
           onChange={(e) => setGoalWeight(e.target.value)}
         /><br></br>
         <div className="button-group">
-        <Next label= "Back" to= "/question1" className= "btn-purple" />
-        <Next label= "Next" to= "/question3" className= "btn-purple"/>
+        <Next label= "Back" to= "/question2" className= "btn-purple" />
+        <Next label= "Next" to= "/question4" className= "btn-purple"/>
         </div>
        
         

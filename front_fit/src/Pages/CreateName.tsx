@@ -26,7 +26,7 @@ const InputName = (): JSX.Element => {
         </div>
         <div className="button-group">
             <Next label= "Back" to= "/welcome" className= "btn-purple" />
-            <Next label= "Next" to= "/question1" className= "btn-purple"/>
+            <Next label= "Next" to= "/question2" className= "btn-purple"/>
         </div>
 
       </FormContent>
