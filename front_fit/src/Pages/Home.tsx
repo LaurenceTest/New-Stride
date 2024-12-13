@@ -2,7 +2,7 @@ import "../CSS/mainPage.css";
 import { Next } from "../Components/Next"
 import HeaderNon from "../Components/header_notuser";
 import womanRunningImage from "../assets/bgs/woman-running-fitness.png"; 
-import ImageComponent from "../Components/Image_component";
+// import ImageComponent from "../Components/Image_component";
 
 function Home(){
     return (
