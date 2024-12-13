@@ -1,6 +1,5 @@
 import { Next } from "../Components/Next"
 import image from "../assets/training_weights_girl.png";
-import maskGroup2 from "../assets/training_weights_girl.png";
 import maskGroup from "../assets/training_weights_girl.png";
 import "../CSS/SignIn.css";
 
@@ -16,9 +15,9 @@ const Welcome = (): JSX.Element => {
         </h2>
 
         <div className="displayWelcome">
-          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
-          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
-          <ImgPreview src={maskGroup2} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
+          <ImgPreview src={maskGroup} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
+          <ImgPreview src={maskGroup} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
+          <ImgPreview src={maskGroup} alt="Fitness" t1="Ready for some wins?" t2="Start tracking, it’s easy!"/>
         </div>
 
         <Next className="btn-purple" to="/createuser" />

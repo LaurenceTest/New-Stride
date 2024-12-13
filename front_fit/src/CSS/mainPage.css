@@ -137,6 +137,65 @@ This is for LOGIN
 */
 
 .login-form {
-    border: pink 3px solid;
+    background-color: #ffffff48;
+    margin: 0 6rem;
+    padding: 1rem 0;
+    border-radius: 20px;
+    font-size: larger;
+    justify-content: center;
+}
+
+.inputs {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-form {
+    width: 75%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
     
+    color: rgb(61, 61, 61);
+}
+
+.forgot-pass {
+    width: 75%;
+    font-size: smaller;
+    text-align: left;
+    line-height: 2rem;
+}
+
+.forgot-pass > a{
+    color: rgba(255, 255, 255, 0.781);
+}
+
+.forgot-pass > a:hover{
+    color: rgba(216, 216, 216, 0.781);
+}
+
+.btn-login, .btn-signup{
+    width: 75%;
+    border: none;
+    font-weight: bolder;
+    border-radius: 50px;
+}
+
+.btn-login {
+    color: white;
+    background: linear-gradient(to left, #6D1DB3, #3B057B);
+}
+
+.btn-signup {
+    border: none;
+    background-color: white;
+    width: 75%;
+    color: #9e35eb;
+}
+
+.btn-login:hover, .btn-signup:hover{
+    transition: 600ms;
+    opacity: 60%;
 }

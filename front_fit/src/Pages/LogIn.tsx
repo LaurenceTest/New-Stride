@@ -1,7 +1,7 @@
 import "../CSS/mainPage.css";
 import React, { useState } from 'react';
-import YogaWoman from "../assets/bgs/woman-stretching-yoga-mat-home.png"
-import HeaderNon from "../Components/header_notuser";
+import YogaWoman from "../assets/bgs/feminist-woman-showing-her-power.png"
+import { Next } from "../Components/Next"
 
 // Interface for login response
 interface LoginResponse {
@@ -18,7 +18,7 @@ const LogIn: React.FC = () => {
     setMessage(''); // Clear any previous messages
 
     try {
-      const response = await fetch('https://example.com/api/login', {
+      const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -37,24 +37,31 @@ const LogIn: React.FC = () => {
 
   return (
     <div>
-    <HeaderNon />
     <div className="text-content">
       <div className="tc-image">
         <img src={YogaWoman} className="featured-image"/>
       </div>
 
       <div className="tc-text">
-        <h1>NewStride</h1>
         <form onSubmit={handleSubmit} className="login-form">
-          <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <h1>Login</h1>
+          <div className="inputs">
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Email Address" className="input-form" required/>
           </div>
-          <div>
-            <label>Password:</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <div className="inputs">
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} 
+            placeholder="Password" className="input-form" required />
+            <div className="forgot-pass">
+              <a href="" className="">Forgot Password?</a>
+            </div>
           </div>
-          <button type="submit">Login</button>
+
+          <div className="inputs">
+            <Next className="btn-login" to="/dashboard" label="Login"/>
+            or
+            <Next className="btn-signup" to="/welcome" label="Sign Up"/>
+          </div>
         </form>
       </div>
     </div>

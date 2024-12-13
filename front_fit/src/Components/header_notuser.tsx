@@ -1,5 +1,6 @@
 import "../CSS/header.css";
 import "../CSS/App.css"
+import { Next } from "../Components/Next"
 
 function HeaderNon() {
   return (
@@ -14,7 +15,7 @@ function HeaderNon() {
         </nav>
         </div>
       <div className="sign-in">
-        <button className="btn login-btn">Log in</button>
+        <Next className="logout-btn" to="/login" label="Log in"/>
       </div>
     </header></>
   );

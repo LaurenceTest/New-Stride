@@ -38,11 +38,14 @@
     background: none;
     color: #fff;
     border: #fff solid 2px;
+    padding: 5px 1rem;
+    border-radius: 10px;
     margin-left: 2rem;
 }
 
 .login-btn:hover, .logout-btn:hover {
     transition: 410ms;
     opacity: 50%;
+    color: #fff;
     border-color: #fff;
 }

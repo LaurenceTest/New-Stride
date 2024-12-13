@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../CSS/mainPage.css";
+import "../CSS/header.css";
 type RoutePath = "/" | "/login" | "/signup" | "/welcome" | "/createuser";
 
 interface Props {
