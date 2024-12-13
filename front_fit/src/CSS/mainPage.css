@@ -86,8 +86,13 @@ body {
 .next {
     display: inline-block;
     text-decoration: none; 
-  }
-
+}
+.next.disabled {
+    pointer-events: none; /* Disables click */
+    opacity: 0.3; 
+    cursor: not-allowed;
+}
+  
 /* 
 
 Buttons
@@ -128,7 +133,7 @@ Buttons
     transition: 600ms;
     color: white;
     opacity: 50%;
-  }
+}
 
   /* 
 
