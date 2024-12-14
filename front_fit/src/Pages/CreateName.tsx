@@ -37,7 +37,7 @@ const InputName = (): JSX.Element => {
     <main className="demographic">
 
        <FormContent 
-        title="Create a username."
+        title="Create a username"
         infoText="We're glad you're here. Let's get to know you a little. What do we call you?">
         <div> 
         <InputField

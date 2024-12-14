@@ -43,9 +43,19 @@
     margin-left: 2rem;
 }
 
-.login-btn:hover, .logout-btn:hover {
+.login-btn:hover, .logout-btn:hover{
     transition: 410ms;
     opacity: 50%;
     color: #fff;
     border-color: #fff;
+}
+
+.logo-btn {
+    color: #fff;
+}
+
+.logo-btn:hover {
+    color: #fff;
+    padding-left: 10px;
+    text-shadow: -10px 5px 3px #000000, 0 0 10px white;
 }

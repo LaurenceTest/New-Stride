@@ -1,3 +1,4 @@
+import "../CSS/mainPage.css"
 interface InputFieldProps {
     label?: string;
     placeholder: string;
@@ -21,6 +22,7 @@ interface InputFieldProps {
           type={type}
           value={value}
           onChange={onChange}
+          className="input-form"
         />
       </div>
     );
