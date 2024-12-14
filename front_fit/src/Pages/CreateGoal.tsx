@@ -20,7 +20,7 @@ const CreateGoal = (): JSX.Element => {
       <main className="demographic">
         <FormContent
           title="Choose your goal"
-          instruction="Select one of the following goals:"
+          instruction=""
           infoText="This will help us customize your experience."
         >
           <RadioGroup

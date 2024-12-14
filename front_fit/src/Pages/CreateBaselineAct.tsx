@@ -20,8 +20,8 @@ const CreateBaselineActivity = (): JSX.Element => {
       <div className="page-container">
       <main className="demographic">
         <FormContent
-          title="Choose your goal"
-          instruction="Select one of the following goals:"
+          title="Activity level"
+          instruction="How active are you?"
           infoText="This will help us customize your experience."
         >
           <RadioGroup

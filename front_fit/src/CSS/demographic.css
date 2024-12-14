@@ -33,6 +33,7 @@
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 20px;
+    text-align: left;
   }
   
   .gender-instance {
@@ -44,7 +45,8 @@
     font-family: "Inter-ExtraBold", Helvetica, Arial, sans-serif;
     font-size: 20px;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin: 15px;
+    text-align: left;
   }
   
   .first-name-instance {

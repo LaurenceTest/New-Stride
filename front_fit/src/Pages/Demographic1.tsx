@@ -49,15 +49,15 @@ const Demographic = (): JSX.Element => {
     <div className="page-container">
     <main className="demographic">
         <FormContent
-            title=""
-            instruction="Please select which sex we should use to calculate your calorie needs."
-            infoText="We use this information to calculate an accurate calorie goal for you.">
+            title="About yourself"
+            instruction="Gender"
+            infoText="We use this information to calculate an accurate plan for you.">
             <RadioGroup
                 options={["Male", "Female"]}
                 value={isMale== null? "": isMale? "Male" : "Female"}
                 onChange={handleSexChange} />
             <InputField
-                label="When were you born?"
+                label="Birthday"
                 placeholder="Enter your birthdate"
                 type="date"
                 value={birthdate}

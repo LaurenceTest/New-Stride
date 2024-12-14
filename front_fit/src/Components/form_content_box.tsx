@@ -13,8 +13,8 @@ interface FormContentProps {
   }: FormContentProps): JSX.Element => {
     return (
       <section className="content">
-        {instruction && <p className="instruction">{instruction}</p>}
         <h2 className="title">{title}</h2>
+        {instruction && <p className="instruction">{instruction}</p>}
         {children}
         {infoText && <p className="info-text">{infoText}</p>}
       </section>
