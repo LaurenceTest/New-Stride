@@ -48,21 +48,9 @@ const CreateUsername = (): JSX.Element => {
     }
   };
 
-  return (
-    <main className="create-username">
+  return (<>
+    <main className="">
       <section className="content-wrapper">
-        <div className="background-images">
-          <img
-            className="background-rectangle"
-            alt="Background Rectangle"
-            src={rectangle8}
-          />
-          <img
-            className="background-vector"
-            alt="Background Vector"
-            src={image}
-          />
-        </div>
 
         <header className="header">
           <h1 className="header-title">NewStride</h1>
@@ -72,7 +60,7 @@ const CreateUsername = (): JSX.Element => {
           <h2 className="form-title">Almost there! Create your account</h2>
           <form className="form">
             <FirstName
-              className="form-input"
+              className="input-form"
               text="Email address"
               value={formData.email}
               onChange={handleChange}
@@ -80,7 +68,7 @@ const CreateUsername = (): JSX.Element => {
             />
             <div className="password-field">
               <FirstName
-                className="form-input"
+                className="input-form"
                 text="Password"
                 value={formData.password}
                 onChange={handleChange}
@@ -97,7 +85,7 @@ const CreateUsername = (): JSX.Element => {
         </div>
       </section>
     </main>
-  );
+    </>);
 };
 
 export default CreateUsername;

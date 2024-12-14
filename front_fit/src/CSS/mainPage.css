@@ -144,7 +144,7 @@ This is for LOGIN
 .login-form {
     background-color: #ffffff48;
     margin: 0 6rem;
-    padding: 1rem 0;
+    padding: 1rem 3rem;
     border-radius: 20px;
     font-size: larger;
     justify-content: center;
@@ -158,7 +158,7 @@ This is for LOGIN
 }
 
 .input-form {
-    width: 75%;
+    width: 100%;
     padding: 1rem;
     border-radius: 10px;
     border: #9e35eb 2px dashed;

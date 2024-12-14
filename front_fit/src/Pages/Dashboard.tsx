@@ -32,11 +32,15 @@ const AgendaCard = ()=>{
     const [exercises] = useState([{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}])
     return(
         <div className="card agenda-card">
-            <button className="agenda-card-btn btn-purple">Done any?</button>
             <div className="week-s-agenda">
-                <section className="agenda-card-design">
+                <button className="agenda-card-btn btn-purple">Done any?</button>
+                <section className="agenda-card-design display-weight">
                     <h3>Weight</h3>
-                    <section className="card"></section>
+                    <div className="card weight-show">
+                        <WeightChart label="Current" weight={432}/>
+                        <WeightChart label="Current" weight={5}/>
+                        <WeightChart label="Current" weight={6}/>
+                    </div>
                 </section>
             </div>
             <div className="card agenda-card-list">
@@ -68,11 +72,12 @@ const ExerciseItem:React.FC<Exercise> = ({name,sets,reps,dur})=>{
     )
 }
 
-const placeholdler:React.FC<Exercise> = ({name,sets,reps,dur})=>{
+const WeightChart:React.FC<{label: string, weight:number}> = ({label, weight})=>{
     return(
         <>
-        <div>
-            
+        <div className="printWeight">
+            <div className="weight-text"><p>{label}</p></div>
+            <div className="weight-circle"><p>{weight}</p></div>
         </div>
         </>
     )

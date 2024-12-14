@@ -68,9 +68,9 @@ const LogIn: React.FC = () => {
                 className="input-form" 
                 required 
               />
-              <div className="forgot-pass">
+              {/* <div className="forgot-pass">
                 <a href="#" className="">Forgot Password?</a>
-              </div>
+              </div> */}
             </div>
 
             <div className="inputs">
