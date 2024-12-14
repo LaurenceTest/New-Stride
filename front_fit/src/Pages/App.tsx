@@ -11,6 +11,7 @@ import Demographic2 from "./Demographic2";
 import CreateGoal from "./CreateGoal";
 import CreateBaselineActivity from "./CreateBaselineAct";
 import InputName from "./CreateName";
+import WorkoutsPage from "./Workout";
 function App() {
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/question4" element={<CreateGoal/>}/>
           <Route path="/question5" element={<CreateBaselineActivity/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/workouts" element={<WorkoutsPage/>}/>
         </Routes>
         
     </Router>

@@ -1,0 +1,9 @@
+.workout-card{
+    display:block;
+    place-self: center;
+}
+
+.workout-card-title{
+    grid-column: span 1;
+    grid-row-start:1;
+}
