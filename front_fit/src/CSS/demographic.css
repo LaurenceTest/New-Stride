@@ -1,11 +1,7 @@
 .demographic {
-    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
   }
   
   .brand-title {
@@ -23,14 +19,12 @@
     max-width: 400px;
     width: 100%;
     text-align: center;
+    margin: 5% 0;
   }
 
   .page-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    padding-top: 60px;
-    background-color: #f5f5f5; 
   }
   
   .instruction {
@@ -61,8 +55,9 @@
     color: #00000099;
     font-family: "Inter-Regular", Helvetica, Arial, sans-serif;
     font-size: 14px;
+    font-style: italic;
+    margin-top: 5%;
     font-weight: 400;
-    margin-bottom: 20px;
   }
   
   .button-group {

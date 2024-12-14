@@ -1,8 +1,7 @@
-
 import { useState } from "react";
-import { Eye } from "../components/Eye";
-import { FirstName } from "../components/FirstName";
-import { Next } from "../components/Next";
+import { Eye } from "../Components/eye";
+import { FirstName } from "../Components/FirstName";
+import { Next } from "../Components/Next";
 import image from "../assets/elements/squiggly_purple_lines.svg";
 import rectangle8 from "../assets/elements/rectangle-8.svg";
 import "../CSS/SignIn.css";
@@ -70,7 +69,7 @@ const CreateUsername = (): JSX.Element => {
         </header>
 
         <div className="form-container">
-          <h2 className="form-title">Almost there! Create your account.</h2>
+          <h2 className="form-title">Almost there! Create your account</h2>
           <form className="form">
             <FirstName
               className="form-input"

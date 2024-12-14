@@ -1,15 +1,15 @@
 import { Next } from "../Components/Next"
-import image from "../assets/training_weights_girl.png";
 import maskGroup from "../assets/training_weights_girl.png";
 import "../CSS/SignIn.css";
 
 const Welcome = (): JSX.Element => {
   return (
     <div className="sign-up">
-      <div className="content">
+      <div className="si-content">
         <h1 className="title">
           NewStride
         </h1>
+        
         <h2 className="subtitle">
           Welcomes you
         </h2>

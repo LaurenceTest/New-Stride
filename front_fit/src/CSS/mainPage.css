@@ -161,9 +161,17 @@ This is for LOGIN
     width: 75%;
     padding: 1rem;
     border-radius: 10px;
-    border: none;
+    border: #9e35eb 2px dashed;
     
     color: rgb(61, 61, 61);
+    transition: border-color 0.1s ease, box-shadow 0.3s ease;
+}
+
+.input-form:focus, .input-form:hover {
+    outline: none;
+    border: #9e35eb 2px solid;
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+
 }
 
 .forgot-pass {
