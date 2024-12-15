@@ -29,26 +29,29 @@ interface Exercise{
 }
 
 const AgendaCard = ()=>{
-    const [exercises] = useState([{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}])
+    const [exercises] = useState([{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}, 
+        {name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8},
+        {name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}
+    ])
     return(
         <div className="card agenda-card">
             <div className="week-s-agenda">
                 <button className="agenda-card-btn btn-purple">Done any?</button>
                 <section className="agenda-card-design display-weight">
-                    <h3>Weight</h3>
+                    <h2>Weight (kg)</h2>
                     <div className="card weight-show">
                         <WeightChart label="Current" weight={432}/>
-                        <WeightChart label="Current" weight={5}/>
-                        <WeightChart label="Current" weight={6}/>
+                        <WeightChart label="Gains" weight={5}/>
+                        <WeightChart label="Goal" weight={6}/>
                     </div>
                 </section>
             </div>
             <div className="card agenda-card-list">
                 {/* FIXME: CSS add */}
                 <div className="exercise-col1"></div>
-                <div className="exercise-col2">Sets</div>
-                <div className="exercise-col3">Reps</div>
-                <div className="exercise-col4">Duration</div>
+                <div className="exercise-col2"><h3 className="agenda-title">Sets</h3></div>
+                <div className="exercise-col3"><h3 className="agenda-title">Reps</h3></div>
+                <div className="exercise-col4"><h3 className="agenda-title">Duration</h3></div>
                 {
                     exercises.map((exercise:Exercise)=>{
                         return(
@@ -64,7 +67,7 @@ const AgendaCard = ()=>{
 const ExerciseItem:React.FC<Exercise> = ({name,sets,reps,dur})=>{
     return(
         <>
-            <div className="exercise-col1">{name}</div>
+            <div className="exercise-col1"><b>{name}</b></div>
             <div className="exercise-col2">{sets}</div>
             <div className="exercise-col3">{reps}</div>
             <div className="exercise-col4">{dur}</div>
@@ -76,8 +79,8 @@ const WeightChart:React.FC<{label: string, weight:number}> = ({label, weight})=>
     return(
         <>
         <div className="printWeight">
-            <div className="weight-text"><p>{label}</p></div>
-            <div className="weight-circle"><p>{weight}</p></div>
+            <div className="weight-text">{label}</div>
+            <div className="weight-circle">{weight}</div>
         </div>
         </>
     )
@@ -86,10 +89,10 @@ const WeightChart:React.FC<{label: string, weight:number}> = ({label, weight})=>
 const TotalCard = ()=>{
     return(
         <div className="card total-card">
-            <header className="total-card-title">Total</header>
+            <header className="total-card-title"><h1>Total</h1></header>
             <TotalCardItem value={10}>Sets</TotalCardItem>
-            <TotalCardItem value={10}>Reps</TotalCardItem>
-            <TotalCardItem value={10}>Time</TotalCardItem>
+            <TotalCardItem value={100}>Reps</TotalCardItem>
+            <TotalCardItem value={10000}>Time</TotalCardItem>
         </div>
     )
 }
@@ -98,7 +101,7 @@ const TotalCardItem:React.FC<{children:string,value:number}> = ({children,value}
     return(
         <>
             <div className="card total-card-item">
-                {children}
+                <div className="total-card-text">{children}</div>
                 <div className="total-card-circle">{value}</div>
             </div>
         </>

@@ -1,16 +1,15 @@
 import "../CSS/mainPage.css"
+import { Link } from "react-router-dom";
 
 const Header:React.FC<{username:string}> = ({username})=>{
     return (
         <><header className="navbar">
           <div className="header-left">
             <div className="logo">
-              <p>NewStride</p>
+              <Link to="/dashboard" className="logo-btn">NewStride</Link>
             </div>
             <nav className="nav-links">
-                <HeaderButton text="Home"/>
-                <HeaderButton text="Workout Plan"/>
-                <HeaderButton text="My Records"/>
+                <Link to="/workouts" className="white-btn">Workout Plan</Link>
             </nav>
             </div>
           <div style={{fontWeight:"bolder"}}>

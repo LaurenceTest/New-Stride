@@ -33,7 +33,13 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4;
-    height: 100%;
+    height: 20rem;
+    overflow-y: scroll;
+}
+
+.agenda-title{
+    border: none;
+    color: #9F35EC;
 }
 
 .exercise-col1{
@@ -45,6 +51,8 @@
     overflow: hidden;           /* Hide the overflowed text */
     text-overflow: ellipsis; 
     max-width: 100%;
+    color: #5b029b;
+
 }
 .exercise-col2{
     grid-column-start: 2;
@@ -64,40 +72,47 @@
     display: grid;
     column-gap: 1em;
     width: 100%;
-    grid-template-columns: auto auto auto
+    grid-template-columns: auto auto auto;
 }
 
 .total-card-title{
     grid-column: span 3;
+    color: #5b029b;
 }
 
 .total-card-item{
     grid-row-start: 2;
     grid-column: span 1;
     justify-self: center;
-    width: 100%;
-    /* font-size: 3rem; */
+    display: flexbox;
+    flex-direction: column;
+}
+
+.total-card-text {
+    color: #9F35EC;
+    font-weight: bolder;
+    font-size: 2.5rem;
 }
 
 .total-card-circle{
-    border: solid 1em;
+    border: solid 5px;
+    /* width: 100%; */
     border-radius: 50%;
+    height: 12rem;
     border-color: #bc61ff;
     aspect-ratio: 1 / 1;
     place-content: center;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.58);
 }
 
 .display-weight{
     width: 100%;
 }
 
-.agenda-card .week-s-agenda {
-}
-
 .weight-show {
     width: 100%;
-    height: 100%;
-    /* border: solid 1px salmon; */
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -108,21 +123,27 @@
     width: inherit;
     display: flex;
     justify-content: space-between;
-    /* border: solid 1px plum; */
+}
+
+.display-weight h2 {
+    color: #5b029b;
 }
 
 .weight-text{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-weight: bold;
+    color: #9F35EC;
 }
 
 .weight-circle {
     border: #bc61ff 5px solid;
     border-radius: 50%;
-    width: 32%;
+    width: 3rem;
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: rgba(0, 0, 0, 0.844);
 }
