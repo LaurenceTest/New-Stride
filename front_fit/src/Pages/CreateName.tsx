@@ -10,7 +10,7 @@ const InputName = (): JSX.Element => {
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);  
   const [error, setError] = useState<string>("");
-  
+
   useEffect(() => {
           if (!name) {
             setIsFormValid(false);
@@ -24,7 +24,7 @@ const InputName = (): JSX.Element => {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const newName = e.target.value;
     setName(newName);
-    sessionStorage.setItem("name", newName);
+    sessionStorage.setItem("username", newName);
   }
 
   const handleSubmit = () => {

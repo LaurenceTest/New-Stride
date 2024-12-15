@@ -1,20 +1,48 @@
 import HeaderSimple from "../Components/header_logo_only";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FormContent } from "../Components/form_content_box"; 
 import { Next } from "../Components/Next";
 import { RadioGroup } from "../Components/radio_group"; 
 import "../CSS/demographic.css";
 
 const CreateBaselineActivity = (): JSX.Element => {
-  const [baseline_activity, setBaseline] = useState("");
+    const [baselineActivity, setBaselineActivity] = useState<string>(
+      sessionStorage.getItem("baselineActivity") || ""
+    );
+    const [isFormValid, setIsFormValid] = useState<boolean>(false);
+    const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);
+    const [error, setError] = useState<string>("");
+  
+    const handleBaselineChange = (value: string) => {
+      setBaselineActivity(value);
+      sessionStorage.setItem("baseline_activity", value);
+    };
+  
+    useEffect(()=> {
+        if (!baselineActivity){
+            setIsFormValid(false);
+            setError("Please select your activity level.");
+        } else {
+            setIsFormValid(true);
+            setError("");
+        }
+    }, [baselineActivity]);
 
-  const handleBaselineAct = (value: string) => {
-    setBaseline(value);
-  };
+    const handleSubmit = () => {
+        setHasAttemptedSubmit(true);
+    };
+
 
  
-  const baseline_activity_option = ["Not Active", "Lightly Active", "Moderately Active", "Very Active", "Extremely Active"];
-  return (
+    const baselineOptions = [
+        "NOT ACTIVE", 
+        "LIGHTLY ACTIVE", 
+        "MODERATELY ACTIVE", 
+        "VERY ACTIVE", 
+        "EXTREMELY ACTIVE"
+    ];
+
+    return (
     <>
       <HeaderSimple />
       <div className="page-container">
@@ -25,13 +53,22 @@ const CreateBaselineActivity = (): JSX.Element => {
           infoText="This will help us customize your experience."
         >
           <RadioGroup
-            options={baseline_activity_option}
-            value={baseline_activity}
-            onChange={handleBaselineAct}
+            options={baselineOptions}
+            value={baselineActivity}
+            onChange={handleBaselineChange}
           />
+          {hasAttemptedSubmit && !isFormValid && (
+              <div className="error">{error}</div>
+          )}
           <div className="button-group">
             <Next label="Back" to="/question4" className="btn-purple" />
-            <Next label="Next" to="/createuser" className="btn-purple" />
+            <Next
+                label="Next"
+                to="/createuser"
+                className="btn-purple"
+                disabled={!isFormValid}
+                onClick={handleSubmit}
+              />
           </div>
         </FormContent>
       </main>

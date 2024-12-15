@@ -54,14 +54,21 @@ const Demographic2 = (): JSX.Element => {
 
   const handleGoalWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newGoalWeight = e.target.value;
-    if (parseFloat(newGoalWeight) > 0) {
+    
+    if (newGoalWeight.trim() === "") {  
+      setGoalWeight("");
+      setGoalWeightError("Goal weight cannot be empty.");
+      sessionStorage.removeItem("weight_goal"); 
+    } else if (parseFloat(newGoalWeight) > 0) {
       setGoalWeight(newGoalWeight);
-      sessionStorage.setItem("goalWeight", newGoalWeight);
-      setGoalWeightError(null); 
+      sessionStorage.setItem("weight_goal", newGoalWeight); 
+      setGoalWeightError(null);
     } else {
       setGoalWeightError("Goal weight must be a positive number.");
+      sessionStorage.removeItem("weight_goal"); 
     }
   };
+  
 
   const handleSubmit = () => {
     setHasAttemptedSubmit(true);
