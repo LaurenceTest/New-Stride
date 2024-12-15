@@ -15,6 +15,7 @@ const WorkoutsPage = ()=>{
         <>
             <Header username="User"/>
             <WorkoutCard/>
+            <div className="padderfillo"></div>
         </>
     )
 }
@@ -30,11 +31,16 @@ const WorkoutCard = ()=>{
         sets:5,
         reps:5,
         duration:5
+    },{
+        name:"Push Up",
+        sets:5,
+        reps:5,
+        duration:5
     }])
     return(
         <div className="card workout-card">
             <h1 className="workout-card-title">Workout Plan</h1>
-            <table>
+            <table className="work-table">
                 <thead>
                     <tr>
                         <WorkoutHeader></WorkoutHeader>
@@ -66,12 +72,12 @@ const WorkoutHeader:React.FC<{children?:string}> = ({children})=>{
 
 const WorkoutItems:React.FC<Workout> = ({name,sets,reps,duration})=>{
     return(
-        <tr>
-            <td>{name}</td>
-            <td><input type="number" placeholder={`${sets}`}/></td>
-            <td><input type="number" placeholder={`${reps}`}/></td>
-            <td><input type="number" placeholder={`${duration}`}/></td>
-            <td><input type="checkbox"/></td>
+        <tr className="work-row">
+            <td className="work-label">{name}</td>
+            <td><input type="number" placeholder={`${sets}`} className="input-form"/></td>
+            <td><input type="number" placeholder={`${reps}`} className="input-form"/></td>
+            <td><input type="number" placeholder={`${duration}`} className="input-form"/></td>
+            <td><input type="checkbox" className="work-done"/></td>
         </tr>
     )
 }

@@ -1,9 +1,70 @@
 .workout-card{
     display:block;
     place-self: center;
+    border: #9e35eb 5px dashed;
+    margin: 2% 0;
+    width: 80%;
 }
 
 .workout-card-title{
+    /* border: cornflowerblue 1px solid; */
+    color: #5b029b;
     grid-column: span 1;
     grid-row-start:1;
+}
+
+.workout-card-header {
+    font-weight: bolder;
+}
+
+.work-table {
+    /* border: khaki 1px solid; */
+    font-size: larger;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.work-row {
+    /* border: saddlebrown 1px solid; */
+    /* background-color: bisque; */
+    margin-bottom: 10px;
+}
+
+.work-row td{
+    /* border-bottom: red 1px dashed; */
+    /* background-color: #d69dff; */
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.work-row:hover td{
+    background-color: #e2c1fa;
+    color: white;
+}
+
+.work-label {
+    /* background-color: palevioletred; */
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+td .input-form{
+    font-weight: bold;
+    font-size: large;
+}
+
+.work-done {
+    accent-color: #9e35eb;
+    border: #9e35eb 1px dashed;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transform: scale(2);
+}
+
+.padderfillo {
+    padding: 10px 0;
 }

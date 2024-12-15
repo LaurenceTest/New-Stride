@@ -13,7 +13,6 @@ const Header:React.FC<{username:string}> = ({username})=>{
             </nav>
             </div>
           <div style={{fontWeight:"bolder"}}>
-            {/* FIXME: CSS might not be good*/}
             Hi, {username}
             <LogoutButton/>
           </div>
