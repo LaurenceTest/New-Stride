@@ -30,7 +30,7 @@ const Demographic = (): JSX.Element => {
     const handleBirthdateChange = (e: React.ChangeEvent<HTMLInputElement>)=> {
         const newBirthdate = e.target.value;
         setBirthdate(newBirthdate);
-        sessionStorage.setItem("birthdate", newBirthdate);
+        sessionStorage.setItem("birth_date", newBirthdate);
     }
 
     const handleSexChange = (value:string)=> {
