@@ -15,6 +15,7 @@
     "npm:bcrypt@*": "5.1.1",
     "npm:bcrypt@^5.1.1": "5.1.1",
     "npm:cookie-parser@*": "1.4.7",
+    "npm:cors@*": "2.8.5",
     "npm:express-rate-limit@*": "7.4.1_express@4.21.1",
     "npm:express-validator@*": "7.2.0",
     "npm:express@*": "4.21.1",
@@ -390,6 +391,13 @@
     },
     "cookie@0.7.2": {
       "integrity": "sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w=="
+    },
+    "cors@2.8.5": {
+      "integrity": "sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==",
+      "dependencies": [
+        "object-assign",
+        "vary"
+      ]
     },
     "dayjs@1.11.13": {
       "integrity": "sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg=="
