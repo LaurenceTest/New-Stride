@@ -3,12 +3,12 @@ import Header from "../Components/header_user"
 import runningWoman from "../assets/bgs/woman-running.png"
 import "../CSS/dashboard.css"
 import "../CSS/mainPage.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Dashboard = ()=>{
     return(
         <div className="dashboard-page">
-            <Header username="User"/>
+            <Header/>
             <div className="text-content">
                 <div className="tc-text"></div>
                 <img src={runningWoman} alt="Running woman" className="featured-image"/>
@@ -33,6 +33,20 @@ const AgendaCard = ()=>{
         {name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8},
         {name:"Push Ups",sets:10,reps:9,dur:8},{name:"Push Ups and test am I rihgt ladies? duhihdwqud overflowing",sets:10,reps:9,dur:8},{name:"Push Ups",sets:10,reps:9,dur:8}
     ])
+    useEffect(()=>{
+        fetch('localhost:5173/user/plan')
+        .then((res)=>{
+            console.log(res)
+        })
+        fetch('localhost:5173/user/goal')
+        .then(res=>{
+            console.log(res)
+        })
+        fetch('localhost/user/workout')
+        .then(res=>{
+            console.log(res)
+        })
+    })
     return(
         <div className="card agenda-card">
             <div className="week-s-agenda">

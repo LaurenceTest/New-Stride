@@ -1,7 +1,7 @@
 import "../CSS/mainPage.css"
 import { Link } from "react-router-dom";
 
-const Header:React.FC<{username:string}> = ({username})=>{
+const Header:React.FC = ()=>{
     return (
         <><header className="navbar">
           <div className="header-left">
@@ -13,7 +13,7 @@ const Header:React.FC<{username:string}> = ({username})=>{
             </nav>
             </div>
           <div style={{fontWeight:"bolder"}}>
-            Hi, {username}
+            Hi, {sessionStorage.getItem("username")}
             <LogoutButton/>
           </div>
         </header></>
