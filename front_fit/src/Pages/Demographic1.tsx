@@ -9,23 +9,24 @@ import "../CSS/demographic.css";
 
 const Demographic = (): JSX.Element => {
     const [birthdate, setBirthdate] = useState<string>(sessionStorage.getItem("birthdate") || "");
-    const [isMale, setIsMale] = useState<boolean | null>(() => {
-        const storedValue = sessionStorage.getItem("isMale");
+    /*const [isMale, setIsMale] = useState<boolean | null>(() => {
+        const storedValue = sessionStorage.getItem("gender");
         return storedValue ? storedValue === "true" : null;
-    });
+    });*/
+    const [sex, setSex] = useState<string>(sessionStorage.getItem("gender") || "");
     const [isFormValid, setIsFormValid] = useState<boolean>(false); 
     const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false); 
     const [error, setError] = useState<string>("");
 
     useEffect(() => {
-        if (!birthdate || isMale == null) {
+        if (!birthdate) {
           setIsFormValid(false);
           setError("Please fill out all required fields.");
         } else {
           setIsFormValid(true);
           setError("");
         }
-    }, [birthdate, isMale]); 
+    }, [birthdate]); 
 
     const handleBirthdateChange = (e: React.ChangeEvent<HTMLInputElement>)=> {
         const newBirthdate = e.target.value;
@@ -34,17 +35,16 @@ const Demographic = (): JSX.Element => {
     }
 
     const handleSexChange = (value:string)=> {
-        const newIsMale = value === "Male";
-        setIsMale(newIsMale);
-        sessionStorage.setItem("isMale", String(newIsMale));
+        setSex(value);
+        sessionStorage.setItem("gender", value);
     }
 
     const handleSubmit = () => {
         setHasAttemptedSubmit(true);
     };
+    const sexOption = ["female", "male"];
 
-
-  return (
+    return (
     <><><HeaderSimple></HeaderSimple></>
     <div className="page-container">
     <main className="demographic">
@@ -53,8 +53,8 @@ const Demographic = (): JSX.Element => {
             instruction="Gender"
             infoText="We use this information to calculate an accurate plan for you.">
             <RadioGroup
-                options={["Male", "Female"]}
-                value={isMale== null? "": isMale? "Male" : "Female"}
+                options={sexOption}
+                value={sex}
                 onChange={handleSexChange} />
             <InputField
                 label="Birthday"

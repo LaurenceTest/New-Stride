@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { InputField } from "../Components/input_field";
 import { Next } from "../Components/Next";
 import "../CSS/SignIn.css";
@@ -17,7 +18,7 @@ const CreateUser = (): JSX.Element => {
     console.log("Session Storage Data:");
     console.log({
       birth_date: sessionStorage.getItem("birth_date"),
-      is_male: sessionStorage.getItem("isMale"),
+      sex: sessionStorage.getItem("gender"),
       height: sessionStorage.getItem("height"),
       weight: sessionStorage.getItem("weight"),
       weight_goal: sessionStorage.getItem("weight_goal"),
@@ -25,7 +26,8 @@ const CreateUser = (): JSX.Element => {
       goal: sessionStorage.getItem("main_goal"),
     });
   };
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); 
     setHasAttemptedSubmit(true);
 
@@ -45,7 +47,7 @@ const CreateUser = (): JSX.Element => {
       password,
       username: sessionStorage.getItem("username"),
       birth_date: sessionStorage.getItem("birth_date"),
-      is_male: sessionStorage.getItem("isMale") === "true",
+      gender: sessionStorage.getItem("gender"),
       height: sessionStorage.getItem("height"),
       weight: sessionStorage.getItem("weight"),
       weight_goal: sessionStorage.getItem("weight_goal"),
@@ -53,20 +55,19 @@ const CreateUser = (): JSX.Element => {
       main_goal: sessionStorage.getItem("main_goal"),
     };
     console.log("Payload being sent to backend:", payload);
-    try {
 
-      const response = await fetch("http://localhost:3306/api/users", {
+    try {
+      const response = await fetch("/user", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
+  
       if (response.ok) {
         console.log("User created successfully!");
       } else {
-        const errorData = await response.json();
+        const text = await response.text(); 
+        const errorData = text ? JSON.parse(text) : { message: "Unknown error" }; // Parse only if text exists
         setError(`Failed to create user: ${errorData.message}`);
       }
     } catch (err) {
@@ -112,7 +113,10 @@ const CreateUser = (): JSX.Element => {
                 label="Submit"
                 to="/"
                 className="btn-purple"
-                onClick={handleSubmit}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent navigation for this specific use case
+                  handleSubmit(e); // Call the submit logic
+                }}
               />
             </div>
           </form>

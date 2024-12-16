@@ -37,9 +37,8 @@ const CreateBaselineActivity = (): JSX.Element => {
     const baselineOptions = [
         "NOT ACTIVE", 
         "LIGHTLY ACTIVE", 
-        "MODERATELY ACTIVE", 
-        "VERY ACTIVE", 
-        "EXTREMELY ACTIVE"
+        "ACTIVE", 
+        "VERY ACTIVE"
     ];
 
     return (

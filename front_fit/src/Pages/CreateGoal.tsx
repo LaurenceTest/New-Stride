@@ -31,7 +31,7 @@ const CreateGoal = (): JSX.Element => {
     
     const goalOptions = [
         "LOSE WEIGHT", 
-        "GAIN WEIGHT", 
+        "MAINTAIN WEIGHT", 
         "GAIN MUSCLE"
     ];
 
