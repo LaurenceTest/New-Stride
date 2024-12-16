@@ -38,7 +38,10 @@ export const userCreateSchema:Schema = {
     password:loginSchema.password,
     birth_date:{
         notEmpty: true,
-        isInt: true
+        isDate: {
+            options: { format: 'YYYY-MM-DD' }, 
+            errorMessage: "Invalid date format. Use 'YYYY-MM-DD'."
+          }
     },
     gender:{
         notEmpty: true,
