@@ -162,6 +162,7 @@ This is for LOGIN
     padding: 1rem;
     border-radius: 10px;
     border: #9e35eb 2px dashed;
+    background-color: white;
     
     color: rgb(61, 61, 61);
     transition: border-color 0.1s ease, box-shadow 0.3s ease;
