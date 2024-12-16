@@ -10,6 +10,7 @@ export const getWorkouts = async (req:Request,res:Response)=>{
         where:{
             user_id: req.body.id
         },
+        attributes:{exclude:['id','user_id','updated_at']},
         order:[['createdAt','DESC']],
         limit: limit
     })

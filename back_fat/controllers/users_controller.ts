@@ -12,7 +12,7 @@ import { isMale } from "../utils/utils.ts";
 export const getUser = async (req:Request,res:Response)=>{
     const user = await User.findOne({
         attributes:{
-            exclude: ['id','password','createdAt','updatedAt']
+            exclude: ['password','createdAt','updatedAt']
         },
         where:{id:req.body.id}
     })

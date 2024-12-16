@@ -13,7 +13,8 @@ export const getPlans = async (req:Request,res:Response)=>{
     const plans:Model[] = await Plan.findAll({
         where: {
             user_id: id
-        }
+        },
+        attributes: {exclude:['id','user_id','updated_at']}
     })
     const ipAddress = req.ip
     console.log(plans)
