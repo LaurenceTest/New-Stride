@@ -1,6 +1,7 @@
 import "jsr:@std/dotenv/load";
 // @ts-types="npm:@types/express"
 import express from "npm:express";
+import cors from "npm:cors"
 import cookieParser from "npm:cookie-parser"
 import sequelize,{syncTables} from "./db_setup.ts";
 import User from "./models/users_model.ts";
@@ -28,6 +29,7 @@ try {
 
 const app:express.Application = express()
 app.use(express.json())
+app.use(cors())
 app.use(cookieParser())
 app.use(rateLimiter)
 app.use(AuthRoutes)
