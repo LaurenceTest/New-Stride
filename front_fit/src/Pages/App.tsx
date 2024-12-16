@@ -12,6 +12,7 @@ import CreateGoal from "./CreateGoal";
 import CreateBaselineActivity from "./CreateBaselineAct";
 import InputName from "./CreateName";
 import WorkoutsPage from "./Workout";
+import RecordsPage from "./Records";
 function App() {
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/question5" element={<CreateBaselineActivity/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/workouts" element={<WorkoutsPage/>}/>
+          <Route path="/records" element={<RecordsPage/>}/>
         </Routes>
         
     </Router>
