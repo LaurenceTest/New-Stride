@@ -4,8 +4,6 @@ import {Request, Response} from "npm:express";
 import bcrypt from "npm:bcrypt"
 import User from "../models/users_model.ts"
 import Goal from "../models/goals_model.ts";
-import Plan from "../models/plans_model.ts";
-import { promptPlan } from "../utils/ai_helper.ts";
 import sequelize from "../db_setup.ts";
 import { ResponseHelper, updateMessage } from "../utils/response.ts";
 import { createToken,MAX_AGE } from "../utils/jwt.ts";
@@ -48,9 +46,6 @@ export const createUser = async (req:Request,res:Response)=>{
         },{
             transaction
         })
-
-        const generatedPlans = await promptPlan(data)
-        await Plan.bulkCreate(generatedPlans,{validate:true,transaction})
         
         res.cookie('jwt',createToken(user.id),{httpOnly:true,maxAge:MAX_AGE * 1000})
         await transaction.commit()

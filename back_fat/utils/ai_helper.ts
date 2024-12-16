@@ -4,13 +4,13 @@ import Plan from "../models/plans_model.ts";
 
 interface Data{
     user_id: number,
-    birth_date:number,
-    gender:string,
+    birth_date:Date,
+    is_male:boolean,
     height:number,
     weight:number,
     main_goal: string,
     baseline_activity: string,
-    weight_goal: string
+    weight_goal: number
 }
 
 export const promptPlan = (data:Data)=>{
@@ -28,7 +28,7 @@ export const promptPlan = (data:Data)=>{
 }]`+
     `\nHere is the person's information:`+
     `\nAge: ${new Date().getFullYear() - new Date(data.birth_date).getFullYear()} years old`+
-    `\nGender: ${data.gender}`+
+    `\nGender: ${data.is_male ? 'male' : 'female'}`+
     `\nHeight: ${data.height} cm`+
     `\nWeight: ${data.weight} kg`+
     `\nGoal: ${data.main_goal}`+
