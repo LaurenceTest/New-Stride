@@ -30,10 +30,21 @@ const CreateUser = (): JSX.Element => {
     return emailRegex.test(email);
   };
   const validateForm = (): boolean => {
-    if (email.trim() === "" || password.trim() === "") return false; 
-    if (!validateEmail(email)) return false; 
+    if (email.trim() === "" || password.trim() === "") {
+      setError("Please provide both email and password.");
+      return false;
+    }
+    if (!validateEmail(email)) {
+      setError("Please provide a valid email address.");
+      return false;
+    }
+    if (password.length < 8 || password.length > 50) {
+      setError("Password must be between 8 and 50 characters.");
+      return false;
+    }
     return true;
   };
+  
   const navigate = useNavigate();
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); 
@@ -46,8 +57,6 @@ const CreateUser = (): JSX.Element => {
     }
     setError(""); 
 
-    // debugging stuff: Log session storage 
-    logSessionStorage();
     
 
     const payload = {

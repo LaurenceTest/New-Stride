@@ -1,7 +1,19 @@
 import "../CSS/mainPage.css"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import { User } from "../Util/interfaceAPI";
 
 const Header:React.FC = ()=>{
+  const [user,setUser] = useState<string>()
+
+  useEffect(()=>{
+    fetch('/user')
+    .then(async res=>{
+        const userJson:User = await res.json()
+        console.log(userJson)
+        setUser(userJson.username)
+    })
+},[])
     return (
         <><header className="navbar">
           <div className="header-left">
@@ -10,21 +22,14 @@ const Header:React.FC = ()=>{
             </div>
             <nav className="nav-links">
                 <Link to="/workouts" className="white-btn">Workout Plan</Link>
-                <Link to="/records" className="white-btn">Records</Link>
             </nav>
             </div>
           <div style={{fontWeight:"bolder"}}>
-            Hi, {sessionStorage.getItem("username")}
+            Hi, {user}
             <LogoutButton/>
           </div>
         </header></>
       );
-}
-
-const HeaderButton:React.FC<{text:string}> = ({text})=>{
-    return(
-        <button className="white-btn">{text}</button>
-    )
 }
 
 const LogoutButton = ()=>{

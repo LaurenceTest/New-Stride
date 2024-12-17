@@ -16,7 +16,6 @@
     grid-row-end: 2;
     height: 3em;
     width: 100%;
-    margin-bottom: 10px;
 }
 
 .agenda-card-design{
@@ -26,6 +25,7 @@
 }
 
 .agenda-card-list{
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
     grid-column-start: 2;
@@ -126,6 +126,7 @@
 
 .display-weight h2 {
     color: #5b029b;
+    margin-top: 10px;
 }
 
 .weight-text{
