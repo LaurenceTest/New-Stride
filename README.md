@@ -40,6 +40,13 @@ Establish your MYSQL Database<br>
 - JWT_ACCESS_TOKEN
     - The key required to sign JWT
 
+> [!WARNING]
+> The backend will not run if the ```.env``` file is imcomplete or does not exist
+
+To run the backend, go to ```./back_fat``` and run the following commands
+- ``` deno run init``` - initializes bcrypt library
+- ``` deno install``` - installs libraries
+- ``` deno run dev``` - runs the backend server
 
 ## Endpoints
 **Users**
