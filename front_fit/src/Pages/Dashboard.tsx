@@ -3,6 +3,7 @@ import Header from "../Components/header_user"
 import runningWoman from "../assets/bgs/woman-running.png"
 import "../CSS/dashboard.css"
 import "../CSS/mainPage.css"
+import { VictoryPie, VictoryTheme, VictoryBar, VictoryChart, VictoryAxis } from "victory"
 import { useEffect, useState } from "react"
 
 const Dashboard = ()=>{
@@ -16,6 +17,7 @@ const Dashboard = ()=>{
             <div className="card-flex">
                 <AgendaCard/>
                 <TotalCard/>
+                <WeekProgress/>
             </div>
         </div>
     )
@@ -120,6 +122,78 @@ const TotalCardItem:React.FC<{children:string,value:number}> = ({children,value}
             </div>
         </>
     )
+}
+
+const WeekProgress:React.FC<{}> = ()=>{
+    return (
+    <div className="card agenda-card">
+        <div className="card prog-circle">
+            <h2>Tasks%</h2>
+            <VictoryPie
+                innerRadius={100}
+                radius={50}
+                width={200}
+                height={200}
+                theme={VictoryTheme.clean}
+                style={{
+                    data: {
+                    fill: ({ datum }) => datum.fill,
+                    },
+                    labels: {
+                        fill: "white",
+                        fontSize: 20,
+                        fontWeight: 500,
+                    }
+                }}
+                data={[
+                    {y: 50, fill: "#9F35EC" },
+                    { y: 50, fill: "grey" }
+                ]}
+                
+            />
+        </div>
+        <div className="card" style={{ width: "700px", height: "100%", margin: "0 auto"}}>
+        <VictoryChart
+            domainPadding={{ x: 200 }}
+            height={1000}
+            width={3000}
+            theme={VictoryTheme.clean}
+            >
+            <VictoryBar
+                data={[{x: "Sunday", y: 20},
+                    {x: "Monday", y: 50},
+                    {x: "Tuesady", y: 29},
+                    {x: "Wednesday", y: 20},
+                    {x: "Thursday", y:80},
+                    {x: "Friday", y: 60},
+                    {x: "Saturday", y: 99}
+                ]}
+                labels={({ datum }) => datum.y}
+                barWidth={200}
+                style={{
+                    data: {
+                    fill: "#9F35EC",
+                    },
+                    labels: {
+                        fontSize: 50,
+                        fontWeight: 500,
+                        fill: "#5b029b",
+                    }
+                }}
+            />
+            <VictoryAxis
+                style={{
+                tickLabels: { 
+                    fontSize: 70, 
+                    padding: 10, 
+                    fontWeight: 500,
+                    fill: "#5b029b",
+                }, // Make X-axis labels bigger
+                }}
+            />
+            </VictoryChart>
+        </div>
+    </div>)
 }
 
 export default Dashboard
