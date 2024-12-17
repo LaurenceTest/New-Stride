@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom"
 
 const WorkoutsPage = ()=>{
     const [workouts, setWorkouts] = useState<Plan[]>([]);
+    const [weight, setWeight] = useState<number | "">("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
     const navigate = useNavigate()
@@ -42,7 +43,11 @@ const WorkoutsPage = ()=>{
     useEffect(()=>{
         fetchGeneratedPlans()
     },[])
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
+        if (weight === "" || weight <= 0) {
+            setError("Please enter a valid weight.");
+            return;
+          }
         //THIS IS HORRIBLE
         //hush
         e.preventDefault()
@@ -68,7 +73,7 @@ const WorkoutsPage = ()=>{
                     repetition: repetition,
                     sets: sets,
                     duration: duration,
-                    weight: 69, //temp
+                    weight: weight,
                     intensity: 7
                 })
             }
@@ -91,17 +96,33 @@ const WorkoutsPage = ()=>{
         <>
             <Header/>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <button
-                        className="btn-generate-plans btn-purple"
-                        disabled={isLoading}
-                        type="submit"
-                        >    {isLoading ? "Submitting..." : "Submit Results"}
-                    </button>
-                    {error && <div className="error-message">{error}</div>}
-                </div>
-                <WorkoutCard workouts={workouts}/>
-                <div className="padderfillo"></div>
+                <br></br>
+                <div className="weight-input-container">
+          <label htmlFor="weight" className="weight-label">
+
+          </label>
+          <input
+            type="number"
+            id="weight"
+            className="input-form"
+            value={weight}
+            onChange={(e) => setWeight(Number(e.target.value))}
+            placeholder="Enter your current weight: e.g., 70"
+            min="1"
+          />
+          <div>
+          <button
+            className="btn-generate-plans btn-purple"
+            disabled={isLoading}
+            type="submit"
+          >
+            {isLoading ? "Submitting..." : "Set latest weight"}
+          </button>
+          {error && <div className="error-message">{error}</div>}
+        </div>
+        </div><br></br>               
+            <WorkoutCard workouts={workouts}/>
+            <div className="padderfillo"></div>
             </form>
         </>
     )
