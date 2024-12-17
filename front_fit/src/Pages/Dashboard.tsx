@@ -136,20 +136,28 @@ const WeightChart:React.FC<{label: string, weight?:number}> = ({label, weight})=
 }
 
 const TotalCard = ()=>{
+    const [setsTotal,setSetTotals] = useState<string>()
+    const [reps,setReps] = useState<string>()
+
+    useEffect(()=>{
+        fetch('/user/workout/total')
+        .then(async res=>{
+            const totalJson = await res.json()
+            console.log(totalJson[0].repetitions)
+            setSetTotals(totalJson[0].sets)
+            setReps(totalJson[0].repetitions)
+        })
+    },[])
     return(
         <div className="card total-card">
             <header className="total-card-title"><h1>Total</h1></header>
-            <TotalCardItem value={10}>Sets</TotalCardItem>
-            <TotalCardItem value={100}>Reps</TotalCardItem>
-            <div className="card total-card-item">
-                <div className="total-card-text">Duration</div>
-                <div className="total-card-circle">10:00:45:00</div>
-            </div>
+            <TotalCardItem value={setsTotal}>Sets</TotalCardItem>
+            <TotalCardItem value={reps}>Reps</TotalCardItem>
         </div>
     )
 }
 
-const TotalCardItem:React.FC<{children:string,value:number}> = ({children,value})=>{
+const TotalCardItem:React.FC<{children:string,value:string}> = ({children,value})=>{
     return(
         <>
             <div className="card total-card-item">

@@ -10,7 +10,7 @@ const Header:React.FC = ()=>{
     fetch('/user')
     .then(async res=>{
         const userJson:User = await res.json()
-        console.log(userJson)
+        // console.log(userJson)
         setUser(userJson.username)
     })
 },[])
