@@ -9,6 +9,7 @@ class Workout extends Model<InferAttributes<Workout>,InferCreationAttributes<Wor
     declare type:string
     declare duration:Date | null
     declare repetition:number | null
+    declare sets:number | null
     declare weight:number
     declare intensity:number
     declare createdAt: CreationOptional<Date>
@@ -42,6 +43,10 @@ Workout.init(
         repetition:{
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        sets:{
+            type: DataTypes.INTEGER,
+            allowNull:true
         },
         weight:{
             type: DataTypes.FLOAT,
