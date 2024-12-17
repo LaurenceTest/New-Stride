@@ -161,6 +161,6 @@ export const validateResult = (req:Request,res:Response,next:NextFunction)=>{
     if(result.isEmpty())
         next()
     else
-        res.send({errors:result.array()})
+        res.status(400).send({errors:result.array()})
     
 }
