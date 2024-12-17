@@ -116,6 +116,14 @@ export const workoutCreateSchema:Schema = {
             errorMessage: "Only allowed time format is HH:MM:SS"
         }
     },
+    repetition:{
+        optional:true,
+        isInt: true
+    },
+    sets:{
+        optional:true,
+        isInt: true
+    },
     weight:{
         trim:true,
         notEmpty: true,
