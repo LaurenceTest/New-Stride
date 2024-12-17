@@ -1,5 +1,5 @@
 import "../CSS/mainPage.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header:React.FC = ()=>{
     return (
@@ -28,8 +28,15 @@ const HeaderButton:React.FC<{text:string}> = ({text})=>{
 }
 
 const LogoutButton = ()=>{
+    const navigate = useNavigate() 
+    const logoutCall = ()=>{
+      fetch('http://localhost:5173/auth/logout')
+      .then(res=>{
+        if(res.ok) navigate('/')
+      })
+    }
     return(
-        <button className="logout-btn">Log Out</button>
+        <button onClick={()=>logoutCall()} className="logout-btn">Log Out</button>
     )
 }
 
