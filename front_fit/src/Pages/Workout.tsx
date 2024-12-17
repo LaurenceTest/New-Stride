@@ -11,32 +11,53 @@ interface Workout{
 }
 
 const WorkoutsPage = ()=>{
+    const [workouts, setWorkouts] = useState<Workout[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>("");
+    const fetchGeneratedPlans = async () => {
+        setIsLoading(true);
+        setError("");
+    
+        try {
+          const response = await fetch(`/user/workout`, {
+            method: "POST",
+          });
+    
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Failed to generate plans.");
+          }
+    
+          const generatedWorkouts: Workout[] = await response.json(); // Backend returns generated plans
+          setWorkouts(generatedWorkouts);
+          console.log("Generated Workouts:", generatedWorkouts);
+        } catch (err) {
+          console.error("Error generating plans:", err);
+          setError("Failed to generate workout plans. Please try again.");
+        } finally {
+          setIsLoading(false);
+        }
+    };
+
     return(
         <>
-            <Header username="User"/>
-            <WorkoutCard/>
+            <Header/>
+            <div>
+                <button
+                    onClick={fetchGeneratedPlans}
+                    className="btn-generate-plans btn-purple"
+                    disabled={isLoading}
+                >    {isLoading ? "Generating..." : "Generate Plans"}
+                </button>
+                {error && <div className="error-message">{error}</div>}
+            </div>
+            <WorkoutCard workouts={workouts}/>
             <div className="padderfillo"></div>
         </>
     )
 }
 
-const WorkoutCard = ()=>{
-    const [workouts,setWorkouts] = useState([{
-        name:"Push Up",
-        sets:5,
-        reps:5,
-        duration:5
-    },{
-        name:"Push Up",
-        sets:5,
-        reps:5,
-        duration:5
-    },{
-        name:"Push Up",
-        sets:5,
-        reps:5,
-        duration:5
-    }])
+const WorkoutCard:  React.FC<{ workouts: Workout[] }> = ({ workouts }) => {
     return(
         <div className="card workout-card">
             <h1 className="workout-card-title">Workout Plan</h1>
@@ -51,18 +72,22 @@ const WorkoutCard = ()=>{
                     </tr>
                 </thead>
                 <tbody>
-                {
-                    workouts.map((workout:Workout)=>{
-                        return(
-                            <WorkoutItems {...workout}/>
-                        )
-                    })
-                }
+                    {workouts.length > 0 ? (
+                        workouts.map((workout: Workout, index) => (
+                        <WorkoutItems key={index} {...workout} />
+                    ))
+                    ) : (
+                    <tr>
+                        <td colSpan={5} className="no-data-message">
+                            No workouts available. Generate a plan!
+                        </td>
+                    </tr>
+                    )}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 const WorkoutHeader:React.FC<{children?:string}> = ({children})=>{
     return(

@@ -1,5 +1,5 @@
 import HeaderSimple from "../Components/header_logo_only";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FormContent } from "../Components/form_content_box"; 
 import { Next } from "../Components/Next";
 import { RadioGroup } from "../Components/radio_group"; 

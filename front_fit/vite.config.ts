@@ -6,10 +6,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/user': {
-        target: 'http://127.0.0.1:4560',
+        target: 'http://127.0.0.1:4560', //change when moving to
       },
       '/auth': {
-        target: 'http://localhost:4560', // Backend URL
+        target: 'http://127.0.0.1:4560', //change when moving to prod
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/auth/, '/auth'),
       },

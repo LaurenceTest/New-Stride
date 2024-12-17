@@ -13,31 +13,43 @@ const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>(''); // State for email input
   const [password, setPassword] = useState<string>(''); // State for password input
   const [message, setMessage] = useState<string>(''); // State for success/error messages
+  const [loading, setLoading] = useState<boolean>(false); 
   const navigate = useNavigate(); // Initialize navigate hook
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent page reload
-    setMessage(''); // Clear any previous messages
-
+  const performLogin = async (): Promise<boolean> => {
+    setMessage(''); // Clear previous messages
+    setLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch('/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
+        credentials: 'include',
       });
 
       if (!response.ok) {
         throw new Error(`Login failed: ${response.statusText}`);
       }
 
-      const data: LoginResponse = await response.json(); // Parse JSON response
+      const data: LoginResponse = await response.json();
       setMessage('Login successful!');
-      localStorage.setItem('token', data.token); // Optionally save token in localStorage
-      navigate('/dashboard'); // Redirect to dashboard
+      localStorage.setItem('token', data.token); // Save token
+      console.log("Login good!");
+      return true; 
     } catch (error) {
-      setMessage((error as Error).message); // Display error message
+      setMessage((error as Error).message);
+      return false; 
     }
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent page reload
+    const success = await performLogin();
+    if (success) {
+      navigate('/dashboard'); // Navigate to dashboard on success
+    }
+  };
+
 
   return (
     <div>
@@ -72,11 +84,20 @@ const LogIn: React.FC = () => {
                 <a href="#" className="">Forgot Password?</a>
               </div> */}
             </div>
-
+            
             <div className="inputs">
-              <button type="submit" className="btn-login">Login</button>
+              <Next
+                className="btn-login"
+                to="/dashboard" 
+                label="Log In"
+                action={performLogin}
+              />
               or
-              <Next className="btn-signup" to="/welcome" label="Sign Up"/>
+              <Next 
+                className="btn-signup"
+                to="/welcome"
+                label="Create a new account"
+              ></Next>
             </div>
           </form>
         </div>
