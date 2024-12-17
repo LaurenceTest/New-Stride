@@ -26,28 +26,37 @@ const LogIn: React.FC = () => {
         body: JSON.stringify({ email, password }),
         credentials: 'include'
       });
-
+      console.log("Server response:", response);
       if (!response.ok) {
-        throw new Error(`Login failed: ${response.statusText}`);
+        const errorData = await response.json();
+        setMessage(errorData.message || 'Login failed, please try again.');
+        console.log("Login failed:", errorData);
+        return false;
       }
-
-      const data: LoginResponse = await response.json();
+      //Not using tokens right now so no need to check
+      /*const data: LoginResponse = await response.json();
+      console.log("Login successful, response data:", data);
+      if (!data.token) {
+        console.log("No token received in response.");
+        setMessage('Login failed: Token missing.');
+        return false; // If no token, treat as a failure
+      }
+      localStorage.setItem('token', data.token); 
+      console.log("Token saved to localStorage:", data.token);*/
       setMessage('Login successful!');
-      localStorage.setItem('token', data.token); // Save token
-      console.log("Login good!");
+
       return true; 
     } catch (error) {
+      console.error("Error during login:", error);
       setMessage((error as Error).message);
-      return false; 
+      return false;
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent page reload
-    const success = await performLogin();
-    if (success) {
-      navigate('/dashboard'); // Navigate to dashboard on success
-    }
+    e.preventDefault(); 
   };
 
 
@@ -88,7 +97,7 @@ const LogIn: React.FC = () => {
             <div className="inputs">
               <Next
                 className="btn-login"
-                to="/dashboard" 
+                to="/dashboard"
                 label="Log In"
                 action={performLogin}
               />

@@ -22,7 +22,7 @@ interface Props {
   label?: string; //default word displayed is "Continue"
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-  action?: ()=> Promise<void | boolean>;
+  action?: ()=> Promise<boolean>;
 }
 
 export const Next = ({ 
@@ -52,11 +52,16 @@ export const Next = ({
       setError(null);
 
       try {
-        await action();
-        navigate(to); 
+        const result = await action();
+        if (result) {
+          console.log(`Navigating to: ${to}`);
+          navigate(to); 
+        }else {
+          console.log("Action returned false; not navigating.");
+        }
       } catch (err) {
         setError("An error occurred. Please try again."); 
-        console.error(err);
+        console.error("Error in Next component:", err);
       } finally {
         setLoading(false);
       }
