@@ -50,47 +50,34 @@ const WorkoutsPage = ()=>{
           }
         //THIS IS HORRIBLE
         //hush
-        e.preventDefault()
-        enum Col{
-            sets = 0,
-            reps,
-            duration,
-            done
-        }
-        const results = []
-        const length = workouts.length
-        const inputs = e.target
-        let i:number = 0
-        for(;i<length;i++){
-            const index = (i * 4) + 1
-            if(inputs[index + Col.done].checked){
-                const repetition = inputs[index + Col.reps].value !== "" ? Number(inputs[index + Col.reps].value) : workouts[i].repetition
-                const sets = inputs[index + Col.sets].value !== "" ? Number(inputs[index + Col.sets].value) : workouts[i].sets
-                const duration = inputs[index + Col.duration].value !== "" ? Number(inputs[index + Col.duration].value) : workouts[i].duration
-                results.push({
-                    name: workouts[i].name,
-                    type: workouts[i].type,
-                    repetition: repetition,
-                    sets: sets,
-                    duration: duration,
-                    weight: weight,
-                    intensity: 7
-                })
-            }
-        }
-        console.log(results)
-        for(const result of results){
-            fetch('/user/workout',{
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(result)
-            })
-            .then(async res=>{
-                console.log(await res.text())
-            })
-        }
-        navigate('/dashboard')
+
+           const results = workouts.map((workout) => ({
+      name: workout.name,
+      type: workout.type,
+      repetition: workout.repetition,
+      sets: workout.sets,
+      duration: workout.duration,
+      weight: weight, // Use the single weight input value here
+      intensity: 7, // Default value for intensity
+    }));
+
+    console.log("Submitting results:", results);
+
+    try {
+      for (const result of results) {
+        const res = await fetch("/user/workout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(result),
+        });
+        console.log(await res.text());
+      }
+      navigate("/dashboard");
+    } catch (err) {
+      console.error("Error submitting results:", err);
+      setError("Failed to submit workout results. Please try again.");
     }
+  };
 
     return(
         <>
@@ -160,22 +147,40 @@ const WorkoutCard:  React.FC<{ workouts: Plan[] }> = ({ workouts }) => {
     );
 };
 
-const WorkoutHeader:React.FC<{children?:string}> = ({children})=>{
-    return(
-        <td className="workout-card-header">{children}</td>
-    )
-}
-
-const WorkoutItems:React.FC<Plan> = ({name,sets,repetition,duration})=>{
-    return(
-        <tr className="work-row">
-            <td className="work-label">{name}</td>
-            <td><input type="number" placeholder={`${sets ?? ""}`} className="input-form"/></td>
-            <td><input type="number" placeholder={`${repetition ?? ""}`} className="input-form"/></td>
-            <td><input type="number" placeholder={`${duration ?? ""}`} className="input-form"/></td>
-            <td><input type="checkbox" className="work-done"/></td>
-        </tr>
-    )
-}
+const WorkoutHeader: React.FC<{ children?: string }> = ({ children }) => (
+    <td className="workout-card-header">{children}</td>
+  );
+  
+  const WorkoutItems: React.FC<Plan> = ({ name, sets, repetition, duration }) => {
+    return (
+      <tr className="work-row">
+        <td className="work-label">{name}</td>
+        <td>
+          <input
+            type="number"
+            placeholder={`${sets ?? ""}`}
+            className="input-form"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            placeholder={`${repetition ?? ""}`}
+            className="input-form"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            placeholder={`${duration ?? ""}`}
+            className="input-form"
+          />
+        </td>
+        <td>
+          <input type="checkbox" className="work-done" />
+        </td>
+      </tr>
+    );
+  };
 
 export default WorkoutsPage
