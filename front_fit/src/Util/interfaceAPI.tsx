@@ -29,8 +29,9 @@ export interface Workout{
     id:number
     name:string
     type:string
-    duration:string
-    repetition:number
+    duration?:string
+    repetition?:number
+    sets?:number
     weight:number
     intensity:number
     createdAt: string
