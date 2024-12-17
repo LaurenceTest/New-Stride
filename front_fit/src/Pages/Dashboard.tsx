@@ -5,6 +5,7 @@ import "../CSS/dashboard.css"
 import "../CSS/mainPage.css"
 import { VictoryPie, VictoryTheme, VictoryBar, VictoryChart, VictoryAxis } from "victory"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { Goal, Plan, User, Workout } from "../Util/interfaceAPI"
 
 const Dashboard = ()=>{
@@ -83,7 +84,7 @@ const AgendaCard = ()=>{
     return(
         <div className="card agenda-card">
             <div className="week-s-agenda">
-                <button className="agenda-card-btn btn-purple">Done any?</button>
+                <Link to="/workouts" className="agenda-card-btn btn-purple">Done Any?</Link>
                 <section className="agenda-card-design display-weight">
                     <h2>Weight (kg)</h2>
                     <div className="card weight-show">

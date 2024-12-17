@@ -44,6 +44,7 @@ const WorkoutsPage = ()=>{
     },[])
     const handleSubmit = (e)=>{
         //THIS IS HORRIBLE
+        //hush
         e.preventDefault()
         enum Col{
             sets = 0,
