@@ -13,7 +13,8 @@ export const loginController = async (req:Request,res:Response)=>{
             res.cookie('jwt',createToken(user.id),{httpOnly:true, maxAge: MAX_AGE * 1000})
             res.sendStatus(200)
             return
-        }
+        }else
+        res.sendStatus(400)
     }else
     res.sendStatus(401)
 }
