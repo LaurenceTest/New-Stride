@@ -6,7 +6,8 @@ const sequelize = new Sequelize({
   username: Deno.env.get("DB_USERNAME"),
   password: Deno.env.get("DB_PASSWORD"),
   host: Deno.env.get("DB_HOST"),
-  port: Number(Deno.env.get("DB_PORT"))
+  port: Number(Deno.env.get("DB_PORT")),
+  logging:false
 })
 export default sequelize
 
