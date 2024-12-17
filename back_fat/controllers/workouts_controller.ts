@@ -3,6 +3,7 @@ import {Request, Response} from "npm:express";
 import Workout from "../models/workouts_model.ts"
 import { ResponseHelper, updateMessage } from "../utils/response.ts";
 import { floorLimit } from "../utils/utils.ts";
+import sequelize from "../db_setup.ts";
 
 export const getWorkouts = async (req:Request,res:Response)=>{
     const limit = floorLimit(Number(req.params.number ?? 10))
@@ -17,8 +18,13 @@ export const getWorkouts = async (req:Request,res:Response)=>{
     res.status(200).send(workouts)
 }
 
+export const getWorkoutTotals = async(_req:Request,res:Response)=>{
+    const [results] = await sequelize.query('SELECT SUM(repetition) as repetitions,SUM(sets) as sets from workouts')
+    res.send(results)
+}
+
 export const createWorkout = async (req:Request,res:Response)=>{
-    const {name,id,type,duration,repetition,weight,intensity} = req.body
+    const {name,id,type,duration,repetition,sets,weight,intensity} = req.body
     try {
         const workout = await Workout.create({
             user_id: id,
@@ -26,6 +32,7 @@ export const createWorkout = async (req:Request,res:Response)=>{
             type: type,
             duration: duration,
             repetition: repetition,
+            sets: sets,
             weight: weight,
             intensity:intensity
         })
