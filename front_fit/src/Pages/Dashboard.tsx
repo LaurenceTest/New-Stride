@@ -46,7 +46,11 @@ const AgendaCard = ()=>{
             const goalJson:Goal = await res.json()
             const workoutJson:Workout[] = await (await fetch('http://localhost:5173/user/workout')).json()
             const userJson:User = await (await fetch('http://localhost:5173/user')).json()
+            // console.log(goalJson.weight_goal);
+            // console.log(workoutJson);
+            // console.log(userJson);
             setWeightData({goal:goalJson.weight_goal,latest:workoutJson[0].weight,original:userJson.weight})
+            // console.log(weightData);
             const planJson:Plan[] = await (await fetch('http://localhost:5173/user/plan')).json()
             setExercises(planJson.filter((plan)=>{
                 if(!workoutJson.find(workout=>workout.name === plan.name)) return true

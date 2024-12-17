@@ -38,7 +38,7 @@ const Demographic = (): JSX.Element => {
     const handleSubmit = () => {
         setHasAttemptedSubmit(true);
     };
-    const sexOption = ["female", "male"];
+    const sexOption = ["FEMALE", "MALE"];
 
     return (
     <><><HeaderSimple></HeaderSimple></>
