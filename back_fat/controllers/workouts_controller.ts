@@ -19,7 +19,7 @@ export const getWorkouts = async (req:Request,res:Response)=>{
 }
 
 export const getWorkoutTotals = async(_req:Request,res:Response)=>{
-    const [results] = await sequelize.query('SELECT SUM(repetition),SUM(sets) from workouts')
+    const [results] = await sequelize.query('SELECT SUM(repetition) as repetitions,SUM(sets) as sets from workouts')
     res.send(results)
 }
 
