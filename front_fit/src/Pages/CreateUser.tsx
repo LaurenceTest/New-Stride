@@ -11,9 +11,8 @@ const CreateUser = (): JSX.Element => {
   const [error, setError] = useState<string>("");
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);
 
-  const validateForm = (): boolean => {
-    return email.trim() !== "" && password.trim() !== "";
-  };
+  
+  
   const logSessionStorage = () => {
     console.log("Session Storage Data:");
     console.log({
@@ -25,6 +24,15 @@ const CreateUser = (): JSX.Element => {
       baselineActivity: sessionStorage.getItem("baseline_activity"),
       goal: sessionStorage.getItem("main_goal"),
     });
+  };
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    return emailRegex.test(email);
+  };
+  const validateForm = (): boolean => {
+    if (email.trim() === "" || password.trim() === "") return false; 
+    if (!validateEmail(email)) return false; 
+    return true;
   };
   const navigate = useNavigate();
   const handleSubmit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -40,7 +48,7 @@ const CreateUser = (): JSX.Element => {
 
     // debugging stuff: Log session storage 
     logSessionStorage();
-
+    
 
     const payload = {
       email,
@@ -65,6 +73,7 @@ const CreateUser = (): JSX.Element => {
   
       if (response.ok) {
         console.log("User created successfully!");
+        navigate("/");
       } else {
         const text = await response.text(); 
         const errorData = text ? JSON.parse(text) : { message: "Unknown error" }; // Parse only if text exists
@@ -109,15 +118,11 @@ const CreateUser = (): JSX.Element => {
             
             <div className="button-group">
               <Next label="Back" to="/question5" className="btn-purple" />
-              <Next
-                label="Submit"
-                to="/"
+              <a
+                href="#"
                 className="btn-purple"
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent navigation for this specific use case
-                  handleSubmit(e); // Call the submit logic
-                }}
-              />
+                onClick={handleSubmit}
+              >Submit </a>
             </div>
           </form>
         </div>

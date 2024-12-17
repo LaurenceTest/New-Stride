@@ -6,7 +6,7 @@ import { RadioGroup } from "../Components/radio_group";
 import "../CSS/demographic.css";
 
 const CreateGoal = (): JSX.Element => {
-    const [goal, setGoal] = useState<string>(sessionStorage.getItem("goal") || "");
+    const [goal, setGoal] = useState<string>(sessionStorage.getItem("main_goal") || "");
     const [isFormValid, setIsFormValid] = useState<boolean>(false);
     const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);
     const [error, setError] = useState<string>("");

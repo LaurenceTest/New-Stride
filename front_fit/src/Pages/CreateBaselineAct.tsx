@@ -7,7 +7,7 @@ import "../CSS/demographic.css";
 
 const CreateBaselineActivity = (): JSX.Element => {
     const [baselineActivity, setBaselineActivity] = useState<string>(
-      sessionStorage.getItem("baselineActivity") || ""
+      sessionStorage.getItem("baseline_activity") || ""
     );
     const [isFormValid, setIsFormValid] = useState<boolean>(false);
     const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);

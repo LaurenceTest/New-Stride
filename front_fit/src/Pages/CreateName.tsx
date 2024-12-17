@@ -6,7 +6,7 @@ import "../CSS/demographic.css";
 import React, { useState, useEffect } from "react";
 
 const InputName = (): JSX.Element => {
-  const [name, setName] = useState(() => sessionStorage.getItem("name") || "");
+  const [name, setName] = useState(() => sessionStorage.getItem("username") || "");
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false);  
   const [error, setError] = useState<string>("");

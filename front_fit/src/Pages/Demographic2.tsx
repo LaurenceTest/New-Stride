@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 const Demographic2 = (): JSX.Element => {
   const [height, setHeight] = useState<string>(sessionStorage.getItem("height") || "");
   const [weight, setWeight] = useState<string>(sessionStorage.getItem("weight") || "");
-  const [goalWeight, setGoalWeight] = useState<string>(sessionStorage.getItem("goalWeight") || "");
+  const [goalWeight, setGoalWeight] = useState<string>(sessionStorage.getItem("weight_goal") || "");
   const [isFormValid, setIsFormValid] = useState<boolean>(false); 
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false); 
   const [error, setError] = useState<string>("");

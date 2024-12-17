@@ -8,11 +8,7 @@ import "../CSS/demographic.css";
 
 
 const Demographic = (): JSX.Element => {
-    const [birthdate, setBirthdate] = useState<string>(sessionStorage.getItem("birthdate") || "");
-    /*const [isMale, setIsMale] = useState<boolean | null>(() => {
-        const storedValue = sessionStorage.getItem("gender");
-        return storedValue ? storedValue === "true" : null;
-    });*/
+    const [birthdate, setBirthdate] = useState<string>(sessionStorage.getItem("birth_date") || "");
     const [sex, setSex] = useState<string>(sessionStorage.getItem("gender") || "");
     const [isFormValid, setIsFormValid] = useState<boolean>(false); 
     const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState<boolean>(false); 
