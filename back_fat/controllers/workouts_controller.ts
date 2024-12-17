@@ -24,7 +24,7 @@ export const getWorkoutTotals = async(_req:Request,res:Response)=>{
 }
 
 export const createWorkout = async (req:Request,res:Response)=>{
-    const {name,id,type,duration,repetition,weight,intensity} = req.body
+    const {name,id,type,duration,repetition,sets,weight,intensity} = req.body
     try {
         const workout = await Workout.create({
             user_id: id,
@@ -32,6 +32,7 @@ export const createWorkout = async (req:Request,res:Response)=>{
             type: type,
             duration: duration,
             repetition: repetition,
+            sets: sets,
             weight: weight,
             intensity:intensity
         })
