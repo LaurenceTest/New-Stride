@@ -11,9 +11,9 @@ function Home(){
             <div className="text-content">
                 <div className="tc-text">
                     <p className="tagline">Fitness Tracking Web App</p>
-                    <h1>Reach your goals with NewStride</h1>
+                    <h1>Track your goals with NewStride</h1>
                     <p className="description">
-                        Build healthy habits with the exercise and calorie tracker
+                        Use AI to generate workout plans catered for you!
                     </p>
                     
                     <Next className="white-btn" to="/welcome" label="START TODAY"/>

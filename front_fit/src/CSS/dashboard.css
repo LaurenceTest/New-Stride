@@ -9,7 +9,6 @@
     display: grid;
     grid-template-columns: 24% 30%;
     width: 100%;
-    margin-bottom: 1em;
 }
 
 .agenda-card-btn{
@@ -146,4 +145,10 @@
     flex-direction: column;
     justify-content: center;
     color: rgba(0, 0, 0, 0.844);
+}
+
+.prog-circle {
+    width: 100%;
+    color: #5b029b;
+    /* border: red 1px solid; */
 }

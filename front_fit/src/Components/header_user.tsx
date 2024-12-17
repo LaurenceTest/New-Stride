@@ -10,6 +10,7 @@ const Header:React.FC = ()=>{
             </div>
             <nav className="nav-links">
                 <Link to="/workouts" className="white-btn">Workout Plan</Link>
+                <Link to="/records" className="white-btn">Records</Link>
             </nav>
             </div>
           <div style={{fontWeight:"bolder"}}>
