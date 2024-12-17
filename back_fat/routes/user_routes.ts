@@ -16,7 +16,7 @@ router.put("/user/update",checkSchema(goalUpdateSchema),validateResult,updateGoa
 
 router.get("/user/workout/:number", getWorkouts)
 router.get("/user/workout/", getWorkouts)
-router.post("/user/workout", checkSchema(workoutCreateSchema),validateResult, createWorkout)
+router.post("/user/workout", createWorkout)
 router.put("/user/workout", checkSchema(workoutUpdateSchema),validateResult, updateWorkout)
 
 router.get("/user",getUser)
