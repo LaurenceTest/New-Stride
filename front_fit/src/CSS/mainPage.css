@@ -1,0 +1,220 @@
+/* 
+
+This is for home page
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-color: #f5f5f5;
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    border: orange 2px dashed;
+}
+
+/* .main-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    width: 100%;
+    
+} */
+
+.text-content {
+    width: 100%;
+    background: linear-gradient(to left, #4b0082, #800080);
+    display: flex;
+}
+
+.text-content > div {
+    width: 80%;
+    /* border: red 1px solid; */
+}
+
+.tc-text {
+    padding-top: 10%; 
+    line-height: 3rem;
+}
+
+.tagline {
+    opacity: 80%;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.text-content h1 {
+    line-height: 1.3;
+
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: #800080;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.featured-image {
+    width: inherit;
+    height: initial;
+}
+
+.next {
+    display: inline-block;
+    text-decoration: none; 
+}
+.next.disabled {
+    pointer-events: none; /* Disables click */
+    opacity: 0.3; 
+    cursor: not-allowed;
+}
+  
+/* 
+
+Buttons
+
+*/
+
+  .white-btn {
+    font-weight: bolder;
+    border-radius: 100px;
+    padding: 5px 20px;
+
+    background: white;
+    color: #9F35EC;
+    border: #9F35EC 1px solid;
+}
+
+.white-btn:hover {
+    transition: 500ms;
+    background: #9F35EC;
+    border-color: #9F35EC;
+    color: white;
+}
+  
+.btn-purple {
+  background-color: #9e35eb;
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-transform: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-purple:hover {
+    transition: 600ms;
+    color: white;
+    opacity: 50%;
+}
+
+  /* 
+
+This is for LOGIN
+
+*/
+
+.login-form {
+    background-color: #ffffff48;
+    margin: 0 6rem;
+    padding: 1rem 3rem;
+    border-radius: 20px;
+    font-size: larger;
+    justify-content: center;
+}
+
+.inputs {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-form {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: #9e35eb 2px dashed;
+    background-color: white;
+    
+    color: rgb(61, 61, 61);
+    transition: border-color 0.1s ease, box-shadow 0.3s ease;
+}
+
+.input-form:focus, .input-form:hover {
+    outline: none;
+    border: #9e35eb 2px solid;
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+
+  input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari */
+  margin: 0; /* Optional: Remove margin */
+}
+
+.forgot-pass {
+    width: 75%;
+    font-size: smaller;
+    text-align: left;
+    line-height: 2rem;
+}
+
+.forgot-pass > a{
+    color: rgba(255, 255, 255, 0.781);
+}
+
+.forgot-pass > a:hover{
+    color: rgba(216, 216, 216, 0.781);
+}
+
+.btn-login, .btn-signup{
+    width: 75%;
+    border: none;
+    font-weight: bolder;
+    border-radius: 50px;
+}
+
+.btn-login {
+    color: white;
+    background: linear-gradient(to left, #6D1DB3, #3B057B);
+}
+
+.btn-signup {
+    border: none;
+    background-color: white;
+    width: 75%;
+    color: #9e35eb;
+}
+
+.btn-login:hover, .btn-signup:hover{
+    transition: 600ms;
+    opacity: 60%;
+}

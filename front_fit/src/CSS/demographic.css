@@ -1,0 +1,96 @@
+.demographic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .brand-title {
+    color: #9e35eb;
+    font-family: "Inter-ExtraBold", Helvetica, Arial, sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+  }
+  
+  .content {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 7.2px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 5% 0;
+  }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .instruction {
+    color: #000000de;
+    font-family: "Inter-ExtraBold", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .gender-instance {
+    margin-bottom: 20px;
+  }
+  
+  .birthdate-label {
+    color: #000000de;
+    font-family: "Inter-ExtraBold", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 15px;
+    text-align: left;
+  }
+  
+  .first-name-instance {
+    margin-bottom: 20px;
+  }
+  
+  .info-text {
+    color: #00000099;
+    font-family: "Inter-Regular", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5%;
+    font-weight: 400;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .goal-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .goal-options label {
+    font-family: "Inter-ExtraBold", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000de;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  

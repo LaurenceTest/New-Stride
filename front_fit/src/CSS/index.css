@@ -1,11 +1,12 @@
 :root {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +25,12 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: block;
+  height: 100%;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url("../assets/bgs/BG.png");
+  font-family: 'Inter', sans-serif;
 }
 
 h1 {
@@ -57,7 +60,9 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* background: linear-gradient(to left, #4b0082, #800080); */
+    background-image: url("../assets/bgs/BG.png");
+    background-size: cover;
   }
   a:hover {
     color: #747bff;
@@ -66,3 +71,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
