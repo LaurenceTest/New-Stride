@@ -14,7 +14,7 @@ export const loginSchema:Schema = {
         escape: true,
         isLength: {
             options:{
-                min:8, max: 32
+                min:8, max: 50
             },
             errorMessage: "Password minimum length is 8 and maximum of 50"
         }            
