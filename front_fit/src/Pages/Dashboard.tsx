@@ -5,7 +5,7 @@ import "../CSS/dashboard.css"
 import "../CSS/mainPage.css"
 import { VictoryPie, VictoryTheme, VictoryBar, VictoryChart, VictoryAxis } from "victory"
 import { useEffect, useState } from "react"
-import { Plan } from "../Util/interfaceAPI"
+import { Goal, Plan, User, Workout } from "../Util/interfaceAPI"
 
 const Dashboard = ()=>{
     return(
@@ -28,28 +28,43 @@ interface Exercise{
     name:string,
     sets?:number,
     reps?:number,
-    dur?:number
+    dur?:string
 }
 
 interface WeightData{
     goal?:number,
-    latest?:number
+    latest?:number,
+    original?:number
 }
 
 const AgendaCard = ()=>{
     const [exercises,setExercises] = useState<Array<Exercise>>([])
     const [weightData,setWeightData] = useState<WeightData>({})
     useEffect(()=>{
-        fetch('http://localhost:4560/user/goal')
+        fetch('http://localhost:5173/user/goal')
         .then(async res=>{
-            const json = await res.json()
-            console.log(json)
-            setWeightData({...weightData,goal:json.weight_goal})
+            const goalJson:Goal = await res.json()
+            const workoutJson:Workout[] = await (await fetch('http://localhost:5173/user/workout')).json()
+            const userJson:User = await (await fetch('http://localhost:5173/user')).json()
+            setWeightData({goal:goalJson.weight_goal,latest:workoutJson[0].weight,original:userJson.weight})
+            const planJson:Plan[] = await (await fetch('http://localhost:5173/user/plan')).json()
+            setExercises(planJson.filter((plan)=>{
+                if(!workoutJson.find(workout=>workout.name === plan.name)) return true
+                return false
+            })
+            .map((workout:Plan)=>{
+                return {
+                    name: workout.name,
+                    sets: workout.sets,
+                    reps: workout.repetition,
+                    dur: workout.duration
+                }
+            })
+            )
         })
-        fetch('http://localhost:4560/user/plan')
+        fetch('http://localhost:5173/user/plan')
         .then(async res=>{
             const json = await res.json()
-            console.log(json)
             setExercises(json.map((workout:Plan)=>{
                 return {
                     name: workout.name,
@@ -59,15 +74,10 @@ const AgendaCard = ()=>{
                 }
             }))
         })
-        fetch('http://localhost:4560/user/workout')
-        .then(async res=>{
-            const json = await res.json()
-            setWeightData({...weightData,latest:json[0].weight})
-        })
     },[])
 
     const getGain = (data:WeightData)=>{
-        return data.goal && data.latest ? data.goal - data.latest : 0
+        return data.original && data.latest ? data.original - data.latest : 0
     }
 
     return(
