@@ -18,7 +18,7 @@ const Dashboard = ()=>{
             <div className="card-flex">
                 <AgendaCard/>
                 <TotalCard/>
-                <WeekProgress/>
+                {/* <WeekProgress/> */}
             </div>
         </div>
     )
@@ -140,7 +140,10 @@ const TotalCard = ()=>{
             <header className="total-card-title"><h1>Total</h1></header>
             <TotalCardItem value={10}>Sets</TotalCardItem>
             <TotalCardItem value={100}>Reps</TotalCardItem>
-            <TotalCardItem value={10000}>Time</TotalCardItem>
+            <div className="card total-card-item">
+                <div className="total-card-text">Duration</div>
+                <div className="total-card-circle">10:00:45:00</div>
+            </div>
         </div>
     )
 }
