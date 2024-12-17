@@ -100,11 +100,12 @@ const AgendaCard = ()=>{
                 <div className="exercise-col3"><h3 className="agenda-title">Reps</h3></div>
                 <div className="exercise-col4"><h3 className="agenda-title">Duration</h3></div>
                 {
-                    exercises.map((exercise:Exercise)=>{
+                    (exercises.length !== 0) ? exercises.map((exercise:Exercise)=>{
                         return(
                             <ExerciseItem {...exercise}/>
                         )
                     })
+                    : <div>No more exercises left!</div>
                 }
             </div>
         </div>
